@@ -21,13 +21,13 @@ user1 = User.create!(email: Faker::Internet.email,
                       password: '234566',
                       location: Faker::Address.city,
                       description: Faker::Lorem.sentence,
-                      role: 'user'
+                      role: 'user',
                       handle: "User1")
 
 puts "Finished creating User1"
 
 puts "Creating Hacking Service"
-hacking = Service.create!(name: "Will hack into your boss's email.",
+hacking = Service.new(name: "Will hack into your boss's email.",
                           price: Faker::Commerce.price,
                           category: "Cybercrime")
 
@@ -37,7 +37,7 @@ hacking.save!
 puts "Finished creating Hacking Service, linked to Vendor 1"
 
 puts "Creating Hacking Job"
-hacking_job = Job.create!(description: "My boss's email address is smellycat@nyc.com",
+hacking_job = Job.new(description: "My boss's email address is smellycat@nyc.com",
                           date: Faker::Date.forward(days: 23),
                           location: Faker::Address.city,
                           status: "In progress")
@@ -48,7 +48,7 @@ hacking_job.save!
 puts "Finished creating Hacking Service, linked to Hacking Service and User1"
 
 puts "Creating Review 1"
-review1 = Review.create!(rating: 5,
+review1 = Review.new(rating: 5,
                           comment: "Much hacking. Much wow. 5 stars.")
 review1.user = user1
 review1.job = hacking_job
