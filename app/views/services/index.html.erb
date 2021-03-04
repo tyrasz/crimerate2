@@ -1,1 +1,16 @@
 <!-- show all services from all users -->
+<!-- TO DO: to add user photos -->
+<h1>All Services</h1>
+<div class="cards">
+  <% @services.each do |service| %>
+    <div class="card-service">
+        <img src="https://source.unsplash.com/random/300x200" />
+        <div class="card-service-infos">
+          <h2><%= link_to service.name, service_path(service) %></h2>
+          <p>By: <%= service.user.handle %></p>
+          <p>Price: $<%= service.price %></p>
+          <p>Category: <%= service.category %></p>
+        </div>
+    </div>
+  <% end %>
+</div>
