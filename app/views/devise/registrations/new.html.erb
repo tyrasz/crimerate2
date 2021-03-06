@@ -30,7 +30,7 @@
                   required: true,
                   hint: ("A handle to identify yourself"),
                   input_html: { autocomplete: "handle" } %>
-      <%= f.input :role,
+      <%= f.input :role, collection: ['vendor','user'],
                   required: true,
                   hint: ("Which are you: Vendor or User"),
                   input_html: { autocomplete: "role" } %>

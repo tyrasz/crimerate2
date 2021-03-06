@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :jobs
-  resources :users, only: [ :index, :show ] do
-    resources :services
-  end
 
-  resources :services, only: [ :index, :destroy ]
+  resources :services
+
+  resources :users, only: [ :show ] do
+  end
 
 end
