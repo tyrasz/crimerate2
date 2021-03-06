@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :jobs
 
-  resources :services, only: [ :new, :create, :edit, :update, :destroy, :index, :show ]
+  resources :services
 
   resources :users, only: [ :show ] do
   end

@@ -20,7 +20,7 @@ class ServicesController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @service = Service.new(service_params)
     authorize @service
     @service.user = @user
@@ -50,6 +50,7 @@ class ServicesController < ApplicationController
 
   def destroy
     @service = Service.find(params[:id])
+    authorize @service
     @service.destroy
     redirect_to services_path
   end

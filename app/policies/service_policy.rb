@@ -33,6 +33,6 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def destroy?
-
+    user == record.user && user.role == 'vendor'
   end
 end

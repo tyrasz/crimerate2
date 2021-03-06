@@ -1,1 +1,8 @@
-<h1>Show page for service</h1>
+<h1> Specific service selected </h1>
+<h2> <%= @service.name %> </h2>
+<p> Price: <%= @service.price %> </p>
+<p> Category: <%= @service.category %> </p>
+
+<%= link_to service_path(@service), method: :delete do %>
+  <i class="far fa-trash-alt"></i>
+<% end %>
