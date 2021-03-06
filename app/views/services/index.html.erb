@@ -4,7 +4,11 @@
 <div class="cards">
   <% @services.each do |service| %>
     <div class="card-service">
-        <img src="https://source.unsplash.com/random/300x200" />
+        <% if service.photo.attached? %>
+          <%= cl_image_tag service.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <img src="https://source.unsplash.com/random/300x200" />
+        <% end %>
         <div class="card-service-infos">
           <h2><%= link_to service.name, service_path(service) %></h2>
           <p>By: <%= service.user.handle %></p>
