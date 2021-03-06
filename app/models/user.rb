@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :location, presence: true
   validates :description, presence: true
+  validates :handle, presence: true
   validates :role, presence: true, inclusion: { in: ['vendor', 'user'] }
 
   has_many :services, dependent: :destroy
