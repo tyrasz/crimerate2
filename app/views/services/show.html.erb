@@ -1,4 +1,7 @@
 <h1> Specific service selected </h1>
+<% if @service.photo.attached? %>
+  <%= cl_image_tag @service.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 <h2> <%= @service.name %> </h2>
 <p> Price: <%= @service.price %> </p>
 <p> Category: <%= @service.category %> </p>
