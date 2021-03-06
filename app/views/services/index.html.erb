@@ -3,6 +3,7 @@
 <h1>All Services</h1>
 <div class="cards">
   <% @services.each do |service| %>
+  <% render 'components/card' %>
     <div class="card-service">
         <img src="https://source.unsplash.com/random/300x200" />
         <div class="card-service-infos">
