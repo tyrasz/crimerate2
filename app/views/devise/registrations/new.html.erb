@@ -1,34 +1,44 @@
-<h2>Sign up</h2>
+<div class="container my-4" >
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :handle,
-                required: true %>
-    <%= f.input :location,
-                required: true %>
-    <%= f.input :description,
-                required: true %>
-    <%= f.input :role, collection: ['user', 'vendor'],
-                required: true %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  </div>
+    <h2>Get started with CrimeRate</h2>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-inputs m-4">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :location,
+                  required: true,
+                  hint: ("Must be an actual place"),
+                  input_html: { autocomplete: "location" } %>
+      <%= f.input :description,
+                  required: true,
+                  hint: ("Describe yourself"),
+                  input_html: { autocomplete: "description" } %>
+      <%= f.input :handle,
+                  required: true,
+                  hint: ("A handle to identify yourself"),
+                  input_html: { autocomplete: "handle" } %>
+      <%= f.input :role,
+                  required: true,
+                  hint: ("Which are you: Vendor or User"),
+                  input_html: { autocomplete: "role" } %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up" %>
+    </div>
+  <% end %>
+
+</div>
