@@ -1,4 +1,4 @@
-class ServicePolicy < ApplicationPolicy
+class JobPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -6,7 +6,9 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    #vendor
+    user_id == job.user_id
+    # need one for user
   end
 
   def show?
@@ -14,7 +16,7 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def new?
-    user == record.user
+    user.role == 'vendor'
   end
 
   def create?
@@ -22,8 +24,7 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def edit?
-    # user ==> current_user
-    user == record.user
+    user.id == record.user_id && user.role == 'vendor'
   end
 
   def update?
@@ -31,6 +32,6 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user == record.user
+    user.id == record.user_id && user.role == 'vendor'
   end
 end
