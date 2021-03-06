@@ -20,10 +20,9 @@ class ServicesController < ApplicationController
   end
 
   def create
-    @user = current_user
     @service = Service.new(service_params)
+    @service.user = current_user
     authorize @service
-    @service.user = @user
     if @service.save
       redirect_to services_path
     else
@@ -37,10 +36,9 @@ class ServicesController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:user_id])
     @service = Service.new(service_params)
+    @service.user = current_user
     authorize @service
-    @service.user = @user
     if @service.update(service_params)
       redirect_to service_path(@service)
     else
