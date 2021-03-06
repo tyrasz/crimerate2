@@ -3,6 +3,7 @@
 <h1>All Services</h1>
 <div class="cards">
   <% @services.each do |service| %>
+  <% render 'components/card' %>
     <div class="card-service">
         <% if service.photo.attached? %>
           <%= cl_image_tag service.photo.key, height: 300, width: 400, crop: :fill %>
