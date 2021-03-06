@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :find_cocktail, only: [:show]
+  before_action :find_job, only: [:show]
 
   def index
     @jobs = Job.all
