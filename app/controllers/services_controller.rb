@@ -1,20 +1,28 @@
 class ServicesController < ApplicationController
   def index
-    @services = Service.all
+    @services = policy_scope(Service)
   end
 
   def show
     @service = Service.find(params[:id])
+    authorize @service
   end
 
   def new
-    @service = Service.new
-    @user = User.new
+    if current_user.role == 'vendor'
+      @service = Service.new
+      @user = User.new
+    else
+      puts 'you are not authorized'
+    end
+
+    authorize @service ## add after youve found the service
   end
 
   def create
     @user = User.find(params[:user_id])
     @service = Service.new(service_params)
+    authorize @service
     @service.user = @user
     if @service.save
       redirect_to services_path
@@ -25,12 +33,13 @@ class ServicesController < ApplicationController
 
   def edit
     @service = Service.find(params[:id])
-    @user = User.new
+    authorize @service
   end
 
   def update
     @user = User.find(params[:user_id])
     @service = Service.new(service_params)
+    authorize @service
     @service.user = @user
     if @service.update(service_params)
       redirect_to service_path(@service)
