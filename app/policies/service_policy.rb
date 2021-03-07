@@ -14,7 +14,7 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def new?
-    user == record.user
+    user.role == 'vendor'
   end
 
   def create?
