@@ -1,6 +1,16 @@
 <!-- show all services from all users -->
 <!-- TO DO: to add user photos -->
 <h1>All Services</h1>
+
+<div class="container">
+  <%= form_tag services_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
+</div>
+
 <div class="cards">
   <% @services.each do |service| %>
     <div class="card-service">
