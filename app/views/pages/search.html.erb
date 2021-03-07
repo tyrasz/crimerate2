@@ -1,1 +1,5 @@
-search.html.erb
+<h1> Your search results </h1>
+
+<% @results.each do |result| %>
+    <%= result.name %><br>
+<% end %>
