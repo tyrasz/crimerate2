@@ -12,14 +12,15 @@ Rails.application.routes.draw do
   end
 
   root to: 'pages#home'
+  get '/search', to: 'pages#search', as: 'search_page'
 
   resources :jobs do
     resources :reviews
   end
 
   resources :services do
-
   end
+
 
   resources :users, only: [ :show ] do
   end

@@ -1,0 +1,6 @@
+<h1> Your search results </h1>
+
+<% @results.each do |result| %>
+    <%= result.name %><br>
+    <%= result.user.handle %><br>
+<% end %>
