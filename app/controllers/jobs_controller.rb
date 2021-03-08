@@ -3,6 +3,14 @@ class JobsController < ApplicationController
 
   def index
     @jobs = policy_scope(Job)
+
+    @jobs = Job.where.not(latitude: nil, longitude: nil)
+    @markers = @jobs.map do |job|
+      {
+        lng: job.longitude,
+        lat: job.latitude
+      }
+    end  
   end
 
   def show
