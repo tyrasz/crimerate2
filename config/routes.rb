@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   end
 
   root to: 'pages#home'
+
   get '/search', to: 'pages#search', as: 'search_page'
+
+  get '/vendors', to: 'pages#vendors', as: 'vendors'
+  get '/users', to: 'pages#users', as: 'users'
 
   resources :jobs, only: [:show] do
     resources :reviews, only: [ :new, :create ]
