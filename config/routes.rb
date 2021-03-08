@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/search', to: 'pages#search', as: 'search_page'
 
-  resources :jobs, only: [:index, :show] do
+  resources :jobs, only: [:index, :show, :destroy] do
     resources :reviews, only: [ :new, :create ]
   end
 
