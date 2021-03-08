@@ -1,10 +1,6 @@
 <div class="container">
   <h1> Booking This Job </h1>
-
-<!-- service_id -->
-<!-- user_id -->
-
-  <%= simple_form_for [@service, @job] do |f| %>
+  <%= simple_form_for [ @service, @job ] do |f| %>
     <%= f.input :description %>
     <%= f.input :date %>
     <%= f.input :location %>

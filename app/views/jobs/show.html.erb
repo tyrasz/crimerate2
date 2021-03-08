@@ -1,9 +1,18 @@
-<h1> This is the job details </h1>
+<div class="container">
+  <h1>Job status for "<%= @job.service.name %>"</h1>
+  <h2>Vendor: <%= @job.service.user.handle %></h2>
+  <p>Requested on <%= @job.created_at %></p>
 
-<h2> description: <%= @job.description %> </h2>
-
-<p> date: <%= @job.date %> </p>
-<p> location: <%= @job.location %> </p>
-<p> status: <%= @job.status %> </p>
-<p> review: <%= @job.review.comment %> </p>
-<p> review: <%= @job.review.rating %> </p>
+  <h3> Your instructions to <%= @job.service.user.handle %>: <%= @job.description %> </h2>
+  <% if @job.service.photo.attached? %>
+    <%= cl_image_tag @job.service.photo.key, class:"card-img-top", height: 300, width: 400, crop: :fill %>
+  <% end %>
+  <h3> To be performed on: <%= @job.date %> </h3>
+  <h3> Location: <%= @job.location %> </h3>
+  <!-- TO DO add geocoding here -->
+  <p> Status: <%= @job.status %> </p>
+  <% if @job.review %>
+    <p> review: <%= @job.review.comment %> </p>
+    <p> review: <%= @job.review.rating %> </p>
+  <% end %>
+</div>
