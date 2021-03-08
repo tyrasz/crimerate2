@@ -1,1 +1,13 @@
-<h1>I am a new job creation page </h1>
+<div class="container">
+  <h1> Booking This Job </h1>
+
+<!-- service_id -->
+<!-- user_id -->
+
+  <%= simple_form_for [@service, @job] do |f| %>
+    <%= f.input :description %>
+    <%= f.input :date %>
+    <%= f.input :location %>
+    <%= f.button :submit, class: "btn btn-primary btn-block" %>
+  <% end %>
+</div>

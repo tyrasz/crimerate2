@@ -10,13 +10,16 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/search', to: 'pages#search', as: 'search_page'
 
-  resources :jobs, only: [:show] do
+  resources :jobs, only: [:index, :show] do
     resources :reviews, only: [ :new, :create ]
   end
 
-  resources :jobs, only: [:index, :new, :create ]
+  # resources :jobs, only: [:index, :new, :create ]
 
-  resources :services
+  resources :services do
+    resources :jobs, only: [:new, :create]
+  end
+
 
   resources :users, only: [ :show ] #revert back
 end

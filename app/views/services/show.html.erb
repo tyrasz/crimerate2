@@ -12,7 +12,7 @@
 
   <%= link_to service_path(@service), method: :delete do %>
   <!-- if role = "user" link to create new job form -->
-  <%= link_to "Book this service!", service_path(@service), class:"btn btn-primary" %>
+  <%= link_to "Book this service!", new_service_job_path(@service), class:"btn btn-primary" %>
 
     <i class="far fa-trash-alt"></i>
   <% end %>
