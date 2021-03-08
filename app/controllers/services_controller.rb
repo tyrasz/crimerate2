@@ -9,12 +9,8 @@ class ServicesController < ApplicationController
   end
 
   def new
-    if current_user.role == 'vendor'
-      @service = Service.new
-      @user = User.new
-    else
-      puts 'you are not authorized'
-    end
+    @service = Service.new
+    @user = User.new
 
     authorize @service ## add after youve found the service
   end
