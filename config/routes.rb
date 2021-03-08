@@ -4,25 +4,19 @@ Rails.application.routes.draw do
   #shorten login url from users/login to login
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
-  end
-
-  #shorten logout url from users/logout to logout
-  devise_scope :user do
     delete 'logout', to: 'devise/sessions#destroy'
   end
 
   root to: 'pages#home'
   get '/search', to: 'pages#search', as: 'search_page'
 
-  resources :jobs do
-    resources :reviews
+  resources :jobs, only: [:show] do
+    resources :reviews, only: [ :new, :create ]
   end
 
-  resources :services do
-  end
+  resources :jobs, only: [:index, :new, :create ]
 
+  resources :services
 
-  resources :users, only: [ :show ] do
-  end
-
+  resources :users, only: [ :show ] #revert back
 end
