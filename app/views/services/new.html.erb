@@ -1,9 +1,11 @@
-<h1> Create a new service </h1>
+<div class="container">
+  <h1> Create a new service </h1>
 
-<%= simple_form_for @service do |f| %>
-  <%= f.input :name %>
-  <%= f.input :price %>
-  <%= f.input :category, collection: [ 'Burglary', 'Cybercrime', 'Drugs', 'Harassment', 'Homicide', 'Theft', 'Vandalism' ] %>
-  <%= f.input :photo, as: :file %>
-  <%= f.button :submit, class: "btn btn-primary btn-block" %>
-<% end %>
+  <%= simple_form_for @service do |f| %>
+    <%= f.input :name %>
+    <%= f.input :price %>
+    <%= f.input :category, collection: [ 'Burglary', 'Cybercrime', 'Drugs', 'Harassment', 'Homicide', 'Theft', 'Vandalism' ] %>
+    <%= f.input :photo, as: :file %>
+    <%= f.button :submit, class: "btn btn-primary btn-block" %>
+  <% end %>
+</div>

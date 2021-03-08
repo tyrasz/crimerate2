@@ -16,11 +16,12 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
     authorize @job
   end
 
   def new
+    @service = Service.find(params[:service_id])
+
     @job = Job.new
     @user = User.new
 
@@ -29,11 +30,12 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
+    @service = Service.find(params[:service_id])
     @job.user = current_user
+    @job.service = @service
     authorize @job
-
     if @job.save
-      redirect_to @job
+      redirect_to jobs_path
     else
       render :new
     end
@@ -49,11 +51,11 @@ class JobsController < ApplicationController
 
   private
 
-  def find_job
-    @job = Job.find(params[:id])
-  end
+  # def find_job
+  #   @job = Job.find(params[:id])
+  # end
 
   def job_params
-    params.require(:job).permit(:description, :date, :location, :service)
+    params.require(:job).permit(:description, :date, :location, :service_id, :user_id)
   end
 end
