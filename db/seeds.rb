@@ -87,7 +87,7 @@ puts "Finished creating 3 services."
 puts "Creating 2 jobs..."
 job1 = Job.new(description: "My boss's email address is smellycat@nyc.com",
                           date: Faker::Date.forward(days: 23),
-                          location: Faker::Address.city,
+                          location: '96 Cove Drive, Singapore',
                           status: "In progress")
 job1.service = service1
 job1.user = user1
@@ -95,7 +95,7 @@ job1.save!
 
 job2 = Job.new(description: "Paint my company logo in bright orange, on the side of International Building.",
                           date: Faker::Date.forward(days: 14),
-                          location: Faker::Address.city,
+                          location:'92 Cove Drive, Singapore',
                           status: "Completed")
 job2.service = service3
 job2.user = user2
