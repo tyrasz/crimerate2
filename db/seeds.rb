@@ -6,6 +6,15 @@ Review.destroy_all
 Service.destroy_all
 User.destroy_all
 
+puts "Create test account for vendor"
+
+testvendor = User.create!(email: test@test.com,
+                      password: '123456',
+                      location: Faker::Address.city,
+                      description: "I am your mama shop's worst nightmare.",
+                      role: 'vendor',
+                      handle: "testvendor")
+
 puts "Creating 3 vendors..."
 vendor1 = User.create!(email: Faker::Internet.email,
                       password: '123456',
