@@ -15,6 +15,9 @@
   <body>
     <%= render 'components/navbar' %>
     <%= render 'shared/flashes' %>
+    <audio autoplay loop id="playAudio">
+        <source src="audio/background_audio.mp3">
+    </audio>
 
     <div class="container">
        <%= yield %>
