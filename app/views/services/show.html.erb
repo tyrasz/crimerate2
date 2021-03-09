@@ -16,4 +16,9 @@
 
     <i class="far fa-trash-alt"></i>
   <% end %>
+  <%= link_to "Destroy this #{@service.name}!", service_path(@service), method: :delete, data: { confirm: "Tio boh?"} %>
 </div>
+
+
+
+
