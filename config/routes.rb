@@ -10,16 +10,31 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/search', to: 'pages#search', as: 'search_page'
 
+
   resources :jobs, only: [:index, :show, :destroy] do
     resources :reviews, only: [ :new, :create ]
   end
 
   # resources :jobs, only: [:index, :new, :create ]
 
+
   resources :services do
     resources :jobs, only: [:new, :create]
   end
 
+  resources :jobs, only: [:index, :show] do
+    resources :reviews, only: [ :new, :create, :index ]
+  end
+
+  # resources :jobs, only: [:index, :new, :create ]
 
   resources :users, only: [ :show ] #revert back
+
+  # vendor route to find vendor
+  get '/vendors/:id', to: 'pages#vendors_show', as: 'vendor'
+
+  # vendors routes to show available vendors
+  get '/vendors', to: 'pages#vendors', as: 'vendors'
+
+
 end

@@ -32,7 +32,7 @@ class ServicesController < ApplicationController
   end
 
   def update
-    @service = Service.new(service_params)
+    @service = Service.find(params[:id])
     @service.user = current_user
     authorize @service
     if @service.update(service_params)
