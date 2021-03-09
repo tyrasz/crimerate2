@@ -17,4 +17,5 @@ class PagesController < ApplicationController
       @results = Service.all.where("lower(category) LIKE :search", search: "%#{@parameter}%")
     end
   end
+
 end

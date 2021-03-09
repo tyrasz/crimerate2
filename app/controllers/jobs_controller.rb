@@ -1,8 +1,7 @@
 class JobsController < ApplicationController
-  before_action :find_job, only: [:show]
+  # before_action :find_job, only: [:show]
 
   def index
-    
     @jobs = policy_scope(Job)
     @jobs = Job.where.not(latitude: nil, longitude: nil)
     authorize(@jobs)
@@ -12,11 +11,7 @@ class JobsController < ApplicationController
         lng: job.longitude,
         lat: job.latitude
       }
-    end  
-  end
-
-  def show
-    authorize @job
+    end
   end
 
   def new
@@ -25,6 +20,11 @@ class JobsController < ApplicationController
     @job = Job.new
     @user = User.new
 
+    authorize @job
+  end
+
+  def show
+    @job = Job.find(params[:id])
     authorize @job
   end
 
@@ -52,7 +52,7 @@ class JobsController < ApplicationController
   private
 
   # def find_job
-  #   @job = Job.find(params[:id])
+  #   @job = Job.find(job_params)
   # end
 
   def job_params

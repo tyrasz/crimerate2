@@ -3,4 +3,5 @@
 <% @results.each do |result| %>
     <%= result.name %><br>
     <%= result.user.handle %><br>
+    <% link_to "Learn more about this user", user_path(result.user_id) %>
 <% end %>
