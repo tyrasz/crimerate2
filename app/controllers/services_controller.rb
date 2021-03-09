@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
   def index
+    raise
     @services = policy_scope(Service)
   end
 

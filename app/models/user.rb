@@ -4,6 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # include pg_search
+  include PgSearch
+
+  scope :sorted, -> { order(handle: :asc) }
+
+  pg_search_scope :search_by_handle, against: :handle
+
   validates :location, presence: true
   validates :description, presence: true
   validates :handle, presence: true
