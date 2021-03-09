@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   get '/search', to: 'pages#search', as: 'search_page'
 
 
+  resources :jobs, only: [:index, :show, :destroy] do
+    resources :reviews, only: [ :new, :create ]
+  end
+
+  # resources :jobs, only: [:index, :new, :create ]
+
+
   resources :services do
     resources :jobs, only: [:new, :create]
   end

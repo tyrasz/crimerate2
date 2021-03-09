@@ -1,14 +1,25 @@
+
 <div class="container mx-3 justify-content-center">
   <h1> <%= @service.name %> </h1>
   <% if @service.photo.attached? %>
     <%= cl_image_tag @service.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
 
-  <div class="card-service">
-    <img src="https://source.unsplash.com/random/300x200" />
-    <p> Price: <%= @service.price %> </p>
-    <p> Category: <%= @service.category %> </p>
-  </div>
+
+<div class="card-service">
+  <img src="https://source.unsplash.com/random/300x200" />
+  <p> Price: <%= @service.price %> </p>
+  <p> Category: <%= @service.category %> </p>
+</div>
+
+
+<!-- if role = "user" link to create new job form -->
+<%= link_to "Book this service!", new_service_job_path(@service), class:"btn btn-primary" %>
+
+<%= link_to service_path(@service), method: :delete do %>
+  <i class="far fa-trash-alt"></i>
+<% end %>
+
 
   <!-- if role = "user" link to create new job form -->
   <%= link_to "Book this service!", new_service_job_path(@service), class:"btn btn-primary" %>
@@ -18,6 +29,7 @@
   <%= link_to "Destroy!", service_path(@service), method: :delete, data: { confirm: "Tio boh?"}, class:"far fa-trash-alt"  %>
 
 </div>
+
 
 
 
