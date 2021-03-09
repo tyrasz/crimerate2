@@ -14,8 +14,8 @@
   <%= link_to "Book this service!", new_service_job_path(@service), class:"btn btn-primary" %>
 
 
-
-  <%= link_to "Destroy #{@service.name}!", service_path(@service), method: :delete, data: { confirm: "Tio boh?"}, class:"far fa-trash-alt"  %>
+  <br>
+  <%= link_to "Destroy!", service_path(@service), method: :delete, data: { confirm: "Tio boh?"}, class:"far fa-trash-alt"  %>
 
 </div>
 
