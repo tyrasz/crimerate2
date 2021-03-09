@@ -1,0 +1,19 @@
+<h1>This is a vendor</h1>
+  <h1></h1>
+  <h1><%= @vendor.location %></h1>
+  <h1></h1>
+  <h1>Ratings go here</h1>
+
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><%= @vendor.handle %></h5>
+    <p class="card-text"><%= @vendor.description %></p>
+    <p class="card-text"><%= @vendor.location %></p>
+
+    <%= link_to "Go back", vendors_path %>
+
+    <p class="card-text">Ratings go here</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
