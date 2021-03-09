@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-  <a class="navbar-brand" href="#">CrimeRate</a>
+  <%= link_to "CrimeRate", root_path, class: "navbar-brand" %>
   <%= form_tag(search_page_path, :method => "get",
       class: 'navbar-form navbar-left') do %>
     <div class="input-group">
@@ -22,13 +22,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <%= link_to "Browse Services", services_path, class: "nav-link" %>
+          <%= link_to "Services", services_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Add New Service", new_service_path, class: "nav-link" %>
+          <%= link_to "Vendors", vendors_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Browse Open Jobs", jobs_path, class: "nav-link" %>
+          <%= link_to "Jobs", jobs_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
         <li class="nav-item dropdown">
