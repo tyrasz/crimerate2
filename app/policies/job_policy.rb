@@ -1,7 +1,9 @@
 class JobPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
+      scope.where(user: @job.service.user)
       scope.where(user: user)
+      # scope.all
     end
   end
 
@@ -9,12 +11,13 @@ class JobPolicy < ApplicationPolicy
     #vendor
     # if you can find any job by this user
     # if the first job is belong to this current_user
-    !record.empty? && record.first.user == user
-    # need one for user
+    # !record.empty? && record.first.user == user
+    true
   end
 
   def show?
-    record.user == user
+    # record.user == user
+    user.id == record.user_id
   end
 
   def new?
