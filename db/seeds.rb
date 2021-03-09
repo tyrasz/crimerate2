@@ -81,11 +81,12 @@ puts "Creating 100 jobs and reviews..."
 
   (3..10).to_a.sample.times do
     review = Review.new(
-      rating: (0..5).to_a.sample,
+      rating: (1..5).to_a.sample,
       comment: Faker::Restaurant.review,
       )
-    review.user = User.all.where("role='vendor'").sample
+    review.user = User.all.where("role='user'").sample
     review.job = job
+    review.save!
   end
 end
 
