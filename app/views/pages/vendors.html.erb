@@ -1,3 +1,23 @@
+<div class="container">
+  <h1>All Vendors</h1>
+
+  <div class="cards" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
+    <% @vendors.each do |vendor| %>
+      <div class=" text-center">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://source.unsplash.com/random/300x200" />
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to vendor.handle, vendor_path(vendor) %></h4>
+            <p class="card-text">Location: <%= vendor.location %></p>
+            <p class="card-text">Description: <%= vendor.description %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
 <% @vendors.each do |vendor| %>
 
   <h1><%= vendor.handle %></h1>
