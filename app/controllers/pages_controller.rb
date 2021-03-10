@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   def home
     if current_user
+      @banner = true
       render :home
     else
       render :splash

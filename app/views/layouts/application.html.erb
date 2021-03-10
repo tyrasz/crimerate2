@@ -14,13 +14,14 @@
   </head>
 
   <body>
-   
+
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <%= render 'shared/banner' if @banner %>
     <div class="container">
-     <%= yield %>
+     <%= yield %><!--
      <script src="vendor/jquery/jquery.min.js"></script>
-     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
      </div>
 
   </body>
