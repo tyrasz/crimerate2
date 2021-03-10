@@ -8,9 +8,10 @@ class PagesController < ApplicationController
   def home
     if current_user
       @banner = true
-      render :home
+      # render :home --> this now routes to _banner partial
     else
-      render :splash
+      @splash = true
+      # render :splash --> this now routes to _splash partial
     end
   end
 

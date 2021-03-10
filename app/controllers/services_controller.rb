@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
   def index
+    @services = Service.search(params[:service])
     @services = policy_scope(Service)
   end
 
