@@ -4,7 +4,7 @@ class JobPolicy < ApplicationPolicy
       if user.role == 'user'
         scope.where(user: user)
       else
-        scope
+        scope.where(user: user)
       end
 
       # scope.where(user: @job.service.user)
