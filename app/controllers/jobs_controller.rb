@@ -3,10 +3,9 @@ class JobsController < ApplicationController
 
   def index
     @jobs = policy_scope(Job)
-    @jobs = Job.where.not(latitude: nil, longitude: nil)
     authorize(@jobs)
     verify_authorized
-    @markers = @jobs.map do |job|
+    @markers = @jobs.geocoded.map do |job|
       {
         lng: job.longitude,
         lat: job.latitude
