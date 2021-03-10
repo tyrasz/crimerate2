@@ -14,9 +14,11 @@
   </head>
 
   <body>
-   
+
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <%= render 'shared/banner' if @banner %>
+    <%= render 'shared/splash' if @splash %>
     <div class="container">
      <%= yield %>
      <script src="vendor/jquery/jquery.min.js"></script>
