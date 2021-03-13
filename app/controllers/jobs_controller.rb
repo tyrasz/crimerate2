@@ -31,7 +31,7 @@ class JobsController < ApplicationController
     @job.service = @service
     authorize @job
     if @job.save
-      redirect_to jobs_path
+      redirect_to order_path
     else
       render :new
     end

@@ -2,9 +2,6 @@ class Service < ApplicationRecord
   belongs_to :user
   has_many :jobs
   has_one_attached :photo
-  has_many :orders
-
-  monetize :price_cents
 
   validates :name, presence: true
   validates :price, presence: true, numericality: true
