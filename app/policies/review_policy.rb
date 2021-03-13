@@ -14,7 +14,8 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def new?
-    (user.id == record.user_id && user.role == 'user') || (user_id == job.user_id && user.role == 'vendor')
+    true
+    # (user == record.user && user.role == 'user') || (user == record.user && user.role == 'vendor')
   end
 
   def create?

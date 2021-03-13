@@ -15,15 +15,14 @@ class JobsController < ApplicationController
 
   def new
     @service = Service.find(params[:service_id])
-
     @job = Job.new
-    @user = User.new
+    @job.user = current_user
 
     authorize @job
   end
 
   def show
-    @job = Job.find(params[:id])
+    @job = find_job
     authorize @job
   end
 
@@ -41,7 +40,7 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @job = Job.find(params[:id])
+    @job = find_job
     authorize @job
     @job.destroy
 
@@ -50,11 +49,9 @@ class JobsController < ApplicationController
 
   private
 
-
   def find_job
     @job = Job.find(params[:id])
   end
-
 
   def job_params
     params.require(:job).permit(:description, :date, :location, :service_id, :user_id)

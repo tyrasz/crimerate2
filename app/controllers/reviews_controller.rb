@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @job = Job.find(params[:job_id])
     @review = Review.new
     @user = User.new
 
@@ -16,6 +17,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @job = Job.find(params[:job_id])
     @review = Review.new(review_params)
     @review.user = current_user
     authorize @review

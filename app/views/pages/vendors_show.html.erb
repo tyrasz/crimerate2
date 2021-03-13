@@ -13,3 +13,48 @@
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
+
+<h1>These are my open jobs</h1>
+
+<% @open_jobs = @vendor.jobs.where(status: "Not yet started" || "In progress") %>
+<% @completed_jobs = @vendor.jobs.where(status: "Completed") %>
+
+<div class="cards" style="display: grid; grid-template-colums: 1fr 1fr; grid-gap: 15px;">
+
+
+  <% @open_jobs.each do |job| %>
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= job.description %></h5>
+      <p class="card-text"><%= job.location %></p>
+      <p class="card-text"><%= job.status %></p>
+
+      <p class="card-text">Ratings go here</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<br />
+
+<h1>These are my closed jobs</h1>
+
+<div class="cards" style="display: grid; grid-template-colums: 1fr 1fr; grid-gap: 15px;">
+
+
+  <% @completed_jobs.each do |job| %>
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= job.description %></h5>
+      <p class="card-text"><%= job.location %></p>
+      <p class="card-text"><%= job.status %></p>
+
+      <p class="card-text">Ratings go here</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <% end %>
+</div>
