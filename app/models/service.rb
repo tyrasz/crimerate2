@@ -7,6 +7,8 @@ class Service < ApplicationRecord
   validates :price, presence: true, numericality: true
   validates :category, presence: true, inclusion: { in: %w(Burglary Cybercrime Drugs Harassment Homicide Theft Vandalism) }
 
+  monetize :price_cents
+
   include PgSearch::Model
   pg_search_scope :global_search,
     against: [ :name, :category ],

@@ -1,14 +1,14 @@
 class OrdersController < ApplicationController
   def create
-    service = Service.find(params[:service_id])
-    order = Order.create!(service: service, service_sku: service.name, amount: service.price, state: 'pending', user: current_user)
+    job = Job.find(params[:job_id])
+    order = Order.create!(job: service, service_sku: job.service.name, amount: job.service.price, state: 'pending', user: current_user)
     skip_authorization
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
-        name: service.name,
-        amount: service.price_cents,
+        name: job.service.name,
+        amount: job.service.price_cents,
         currency: 'usd',
         quantity: 1
       }],
