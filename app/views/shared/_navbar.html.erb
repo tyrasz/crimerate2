@@ -34,18 +34,13 @@
             <%= link_to "My jobs", jobs_path, class: "nav-link" %>
           </li>
 <!-- dropdown -->
-          <div>
-            <li class="nav-item dropdown">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': true %>
-              <h6><span class="badge badge-secondary" style="float: none">Vendor</span></h6>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <%= link_to "My Profile", "#", class: "dropdown-item" %>
-                <%= link_to "My Jobs", jobs_path, class: "dropdown-item" %>
-                <%= link_to "My Account", edit_user_registration_path, class: "dropdown-item" %>
-                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-              </div>
-            </li>
-          </div>
+          <li class="nav-item dropdown">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "My Account", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
 <!-- if not signed in -->
         <% else %>
           <li class="nav-item">
@@ -53,7 +48,6 @@
               <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
               <%= link_to "Login", new_user_session_path, class: "nav-link" %>
             </div>
-          </li>
         <% end %>
       </ul>
     </div>

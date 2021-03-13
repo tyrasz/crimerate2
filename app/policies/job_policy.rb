@@ -4,7 +4,7 @@ class JobPolicy < ApplicationPolicy
       if user.role == 'user'
         scope.where(user: user)
       else
-        scope
+        scope.where(service: user.services)
       end
 
       # scope.where(user: @job.service.user)
@@ -13,21 +13,13 @@ class JobPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    #vendor
-    # if you can find any job by this user
-    # if the first job is belong to this current_user
-    # !record.empty? && record.first.user == user
-    user.role == 'user'
-  end
-
   def show?
-    # record.user == user
-    user.id == record.user_id
+    # record.user == user OR vendor id is the user id of the service
+    user.id == record.user_id || user.id == record.service.user_id
   end
 
   def new?
-    user.role == 'vendor'
+    user.role == 'user'
   end
 
   def create?

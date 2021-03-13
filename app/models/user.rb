@@ -23,4 +23,5 @@ class User < ApplicationRecord
   has_many :services, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :jobs, dependent: :destroy
+  has_many :orders
 end
