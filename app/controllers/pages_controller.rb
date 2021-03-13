@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
 
   def home
+    # raise
     if current_user
       @banner = true
       # render :home --> this now routes to _banner partial
