@@ -3,8 +3,6 @@ class JobsController < ApplicationController
 
   def index
     @jobs = policy_scope(Job)
-    authorize(@jobs)
-    verify_authorized
     @markers = @jobs.geocoded.map do |job|
       {
         lng: job.longitude,
