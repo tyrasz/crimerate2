@@ -16,15 +16,4 @@ class Service < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
-  # def self.search(search)
-  #   if search
-  #     where(["name ILIKE ?", "%#{search}%"])
-  #     # services = Service.all
-  #     # services = services.where(category: search[:":category"][","])
-  #     # return services
-  #   else
-  #     all
-  #   end
-  # end
 end
