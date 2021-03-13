@@ -5,11 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # include pg_search
-  include PgSearch
+  include PgSearch::Model
 
   scope :sorted, -> { order(handle: :asc) }
 
-  pg_search_scope :search_by_handle, against: :handle
+    pg_search_scope :search_by_location_and_handle,
+    against: [ :location, :handle ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 
   validates :location, presence: true
   validates :description, presence: true

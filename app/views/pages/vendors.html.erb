@@ -1,11 +1,17 @@
 <div class="container">
   <h1>All Vendors</h1>
+  <%= form_tag(vendors_path, method:"get") do %>
+    <div class="input-group">
+    <%= text_field_tag :search,params[:search],placeholder: "Search by location or handle", class: "form-control"%>
+    <%= submit_tag "Search",:class => 'btn btn-info glyphicon glyphicon-search' %>
+    </div>
+  <% end %>
 
   <div class="cards" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
     <% @vendors.each do |vendor| %>
       <div class=" text-center">
         <div class="card h-100">
-          <img class="card-img-top" src="https://source.unsplash.com/random/300x200" />
+          <img class="card-img-top" src="https://source.unsplash.com/400x300/?teddy,<%= vendor.location %>/300x200" />
           <div class="card-body">
             <h4 class="card-title"><%= link_to vendor.handle, vendor_path(vendor) %></h4>
             <p class="card-text">Location: <%= vendor.location %></p>
