@@ -36,5 +36,7 @@ Rails.application.routes.draw do
   # vendors routes to show available vendors
   get '/vendors', to: 'pages#vendors', as: 'vendors'
 
+  resources :orders, only: [:show, :create]
+
 
 end

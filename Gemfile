@@ -9,6 +9,7 @@ gem 'rails', '~> 6.1.3'
 gem 'pg', '~> 1.1'
 gem 'pundit'
 gem 'stripe'
+gem 'money-rails'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
