@@ -1,5 +1,9 @@
 <div class="container">
   <h1> Rate This Job </h1>
 
-  <%= render :rating %>
+  <%= simple_form_for [@job, @review] do |f| %>
+    <%= f.input :rating, collection: (1..5) %>
+    <%= f.input :comment %>
+    <%= f.button :submit, class: "btn btn-primary btn-block" %>
+  <% end %>
 </div>

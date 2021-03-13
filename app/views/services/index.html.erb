@@ -1,5 +1,18 @@
 <h1>All Services</h1>
-
+<!-- <h3>Filter:</h3> -->
+<%#= form_tag(services_path, method:"get") do %>
+  <<!-- select name=services[:category], class="form-control">
+    <option value="None">-Select-</option>
+    <option value="Burglary">-Burglary-</option>
+    <option value="Cybercrime">-Cybercrime-</option>
+    <option value="Drugs">-Drugs-</option>
+    <option value="Harassment">-Harassment-</option>
+    <option value="Homicide">-Homicide-</option>
+    <option value="Theft">-Theft-</option>
+    <option value="Vandalism">-Vandalism-</option>
+  </select>
+  < -->input type="submit" value="Submit">
+<%# end %>
 <div class="cards" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
   <% @services.each do |service| %>
     <div class=" text-center">

@@ -9,9 +9,11 @@ class Service < ApplicationRecord
 
   def self.search(search)
     if search
-      find(:service, :conditions => ['name LIKE ?', "%#{search}%"])
+      services = Service.all
+      services = services.where(category: search[:":category"][","])
+      return services
     else
-      find(:service)
+      Service.all
     end
   end
 end
