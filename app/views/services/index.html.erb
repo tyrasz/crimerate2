@@ -11,9 +11,10 @@
     <option value="Theft">-Theft-</option>
     <option value="Vandalism">-Vandalism-</option>
   </select>
-  < -->input type="submit" value="Submit">
-<%# end %>
+  <input type="submit" value="Submit">
+<%# end %> -->
 <div class="cards" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
+  
   <% @services.each do |service| %>
     <div class=" text-center">
       <div class="card h-100">
@@ -27,8 +28,6 @@
           <p class="card-text">By: <%= service.user.handle %></p>
           <p class="card-text">Price: $<%= service.price %></p>
           <p class="card-text">Category: <%= service.category %></p>
-        </div>
-        <div class="card-footer">
           <%= link_to "Book me!", service_path(service), class:"btn btn-primary" %>
         </div>
       </div>

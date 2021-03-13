@@ -5,6 +5,7 @@ class Job < ApplicationRecord
 
   belongs_to :service
   belongs_to :user
+  belongs_to :review
   has_one :review, dependent: :destroy
 
   geocoded_by :location
