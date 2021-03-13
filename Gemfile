@@ -24,8 +24,6 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'geocoder'
 gem 'pg_search', '~> 2.3.0'
-#adding pg_search for search
-gem 'pg_search', '~> 2.3.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
