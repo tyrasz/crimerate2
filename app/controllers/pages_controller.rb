@@ -32,5 +32,6 @@ class PagesController < ApplicationController
     else
       @vendors = User.where(role: 'vendor')
     end
+    # @vendors = policy_scope(@vendors)
   end
 end
