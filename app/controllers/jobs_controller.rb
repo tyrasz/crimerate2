@@ -37,7 +37,7 @@ class JobsController < ApplicationController
         payment_method_types: ['card'],
         line_items: [{
           name: @job.service.name,
-          amount: @job.service.price,
+          amount: @job.service.price_cents,
           currency: 'usd',
           quantity: 1
         }],
@@ -46,7 +46,7 @@ class JobsController < ApplicationController
       )
 
       order.update(checkout_session_id: session.id)
-      redirect_to new_order_payment(order)
+      redirect_to new_order_payment_path(order)
     else
       render :new
     end
