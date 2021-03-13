@@ -1,5 +1,5 @@
 
-<div  >
+<div>
   <div class="card-header">
     <h1> <%= @service.name %> </h1>
     <% if @service.photo.attached? %>
@@ -19,14 +19,13 @@
       <br>
     </div>
   </div>
-  
-  
-  
-  
   <!-- if role = "user" link to create new job form -->
-  
-  
-  
+  <%= form_tag orders_path do %>
+    <%= hidden_field_tag 'service_id', @service.id %>
+    <%= submit_tag 'Hire me', class: 'btn btn-primary' %>
+  <% end %>
+  <br>
+  <%= link_to "Destroy!", service_path(@service), method: :delete, data: { confirm: "Tio boh?"}, class:"far fa-trash-alt"  %>
 </div>
 
 

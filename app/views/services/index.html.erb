@@ -1,34 +1,40 @@
 <h1>All Services</h1>
-<!-- <h3>Filter:</h3> -->
-<%#= form_tag(services_path, method:"get") do %>
-  <!-- <select name=services[:category], class="form-control">
+
+<h3>Filter:</h3>
+<%= form_tag(services_path, method:"get") do %>
+  <select name="search", class="form-control">
     <option value="None">-Select-</option>
-    <option value="Burglary">-Burglary-</option>
-    <option value="Cybercrime">-Cybercrime-</option>
-    <option value="Drugs">-Drugs-</option>
-    <option value="Harassment">-Harassment-</option>
-    <option value="Homicide">-Homicide-</option>
-    <option value="Theft">-Theft-</option>
-    <option value="Vandalism">-Vandalism-</option>
+    <option value="Burglary">Burglary</option>
+    <option value="Cybercrime">Cybercrime</option>
+    <option value="Drugs">Drugs</option>
+    <option value="Harassment">Harassment</option>
+    <option value="Homicide">Homicide</option>
+    <option value="Theft">Theft</option>
+    <option value="Vandalism">Vandalism</option>
   </select>
   <input type="submit" value="Submit">
 <%# end %> -->
 <div class="card-trip" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
-  
+  <%#= text_field_tag :search,params[:search] %>
+  <%= submit_tag "Search", class:"form-control" %>
+<% end %>
+<div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
+
   <% @services.each do |service| %>
     <div class=" text-center">
       <div class="card h-100">
         <% if service.photo.attached? %>
           <%= cl_image_tag service.photo.key, class:"card-img-top", height: 300, width: 400, crop: :fill %>
         <% else %>
-          <img class="card-img-top" src="https://source.unsplash.com/random/300x200" />
+          <img class="card-img-top" src="https://source.unsplash.com/400x300/?<%= service.name %>,<%= service.category %>/300x200" />
         <% end %>
         <div class="card-body">
           <h4 class="card-title"><%= link_to service.name, service_path(service) %></h4>
           <p class="card-text">By: <%= service.user.handle %></p>
           <p class="card-text">Price: $<%= service.price %></p>
           <p class="card-text">Category: <%= service.category %></p>
-          <div class="footer"> <%= link_to "Book me!", service_path(service), class:"btn btn-primary" %>
+          <div class="footer"> 
+           <%= link_to "Book me!", service_path(service), class:"btn btn-primary" %>
           </div>
         </div>
       </div>

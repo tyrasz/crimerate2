@@ -3,8 +3,6 @@ class JobsController < ApplicationController
 
   def index
     @jobs = policy_scope(Job)
-    authorize(@jobs)
-    verify_authorized
     @markers = @jobs.geocoded.map do |job|
       {
         lng: job.longitude,
@@ -15,7 +13,6 @@ class JobsController < ApplicationController
 
   def new
     @service = Service.find(params[:service_id])
-
     @job = Job.new
     @job.user = current_user
 
@@ -23,7 +20,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
+    @job = find_job
     authorize @job
   end
 
@@ -41,7 +38,7 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @job = Job.find(params[:id])
+    @job = find_job
     authorize @job
     @job.destroy
 
@@ -50,11 +47,9 @@ class JobsController < ApplicationController
 
   private
 
-
   def find_job
     @job = Job.find(params[:id])
   end
-
 
   def job_params
     params.require(:job).permit(:description, :date, :location, :service_id, :user_id)

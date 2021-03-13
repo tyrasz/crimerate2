@@ -1,7 +1,23 @@
 <h1> Your search results </h1>
-
-<% @results.each do |result| %>
-    <%= result.name %><br>
-    <%= result.user.handle %><br>
-    <% link_to "Learn more about this user", user_path(result.user_id) %>
-<% end %>
+<div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
+  <% @results.each do |result| %>
+      <div class=" text-center">
+        <div class="card h-100">
+          <% if result.photo.attached? %>
+            <%= cl_image_tag result.photo.key, class:"card-img-top", height: 300, width: 400, crop: :fill %>
+          <% else %>
+            <img class="card-img-top" src="https://source.unsplash.com/400x300/?<%= result.name %>,<%= result.category %>/300x200" />
+          <% end %>
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to result.name, service_path(result) %></h4>
+            <p class="card-text">By: <%= result.user.handle %></p>
+            <p class="card-text">Price: $<%= result.price %></p>
+            <p class="card-text">Category: <%= result.category %></p>
+          </div>
+          <div class="card-footer">
+            <%= link_to "Book me!", service_path(result), class:"btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
