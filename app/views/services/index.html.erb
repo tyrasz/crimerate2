@@ -3,13 +3,13 @@
 <%= form_tag(services_path, method:"get") do %>
   <select name="search", class="form-control">
     <option value="None">-Select-</option>
-    <option value="Burglary">-Burglary-</option>
-    <option value="Cybercrime">-Cybercrime-</option>
-    <option value="Drugs">-Drugs-</option>
-    <option value="Harassment">-Harassment-</option>
-    <option value="Homicide">-Homicide-</option>
-    <option value="Theft">-Theft-</option>
-    <option value="Vandalism">-Vandalism-</option>
+    <option value="Burglary">Burglary</option>
+    <option value="Cybercrime">Cybercrime</option>
+    <option value="Drugs">Drugs</option>
+    <option value="Harassment">Harassment</option>
+    <option value="Homicide">Homicide</option>
+    <option value="Theft">Theft</option>
+    <option value="Vandalism">Vandalism</option>
   </select>
   <%#= text_field_tag :search,params[:search] %>
   <%= submit_tag "Search", class:"form-control" %>

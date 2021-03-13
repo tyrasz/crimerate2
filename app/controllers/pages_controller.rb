@@ -25,8 +25,12 @@ class PagesController < ApplicationController
   end
 
   def vendors
-    @vendors = User.where(role: 'vendor')
+    # @vendors = User.where(role: 'vendor')
+
+    if params[:search].present?
+      @vendors = User.where(["location ILIKE ?", "%#{params[:search]}%"])
+    else
+      @vendors = User.where(role: 'vendor')
+    end
   end
-
-
 end
