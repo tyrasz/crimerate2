@@ -14,7 +14,10 @@
 
 
 <!-- if role = "user" link to create new job form -->
-  <%= link_to "Book this service!", new_service_job_path(@service), class:"btn btn-primary" %>
+  <%= form_tag orders_path do %>
+    <%= hidden_field_tag 'service_id', @service.id %>
+    <%= submit_tag 'Hire me', class: 'btn btn-primary' %>
+  <% end %>
   <br>
   <%= link_to "Destroy!", service_path(@service), method: :delete, data: { confirm: "Tio boh?"}, class:"far fa-trash-alt"  %>
 

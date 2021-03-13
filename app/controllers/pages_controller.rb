@@ -20,13 +20,17 @@ class PagesController < ApplicationController
       redirect_to(root_path, alert: "Empty field!") and return
     else
       @parameter = params[:search].downcase
-      @results = Service.all.where("lower(category) LIKE :search", search: "%#{@parameter}%")
+      @results = Service.global_search(params[:search])
     end
   end
 
   def vendors
-    @vendors = User.where(role: 'vendor')
+    # @vendors = User.where(role: 'vendor')
+
+    if params[:search].present?
+      @vendors = User.search_by_location_and_handle(params[:search])
+    else
+      @vendors = User.where(role: 'vendor')
+    end
   end
-
-
 end
