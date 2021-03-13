@@ -13,7 +13,7 @@
   </select>
   <input type="submit" value="Submit">
 <%# end %> -->
-<div class="cards" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
+<div class="card-trip" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
   
   <% @services.each do |service| %>
     <div class=" text-center">
@@ -28,7 +28,8 @@
           <p class="card-text">By: <%= service.user.handle %></p>
           <p class="card-text">Price: $<%= service.price %></p>
           <p class="card-text">Category: <%= service.category %></p>
-          <%= link_to "Book me!", service_path(service), class:"btn btn-primary" %>
+          <div class="footer"> <%= link_to "Book me!", service_path(service), class:"btn btn-primary" %>
+          </div>
         </div>
       </div>
     </div>
