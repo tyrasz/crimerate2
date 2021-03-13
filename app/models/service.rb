@@ -7,13 +7,14 @@ class Service < ApplicationRecord
   validates :price, presence: true, numericality: true
   validates :category, presence: true, inclusion: { in: %w(Burglary Cybercrime Drugs Harassment Homicide Theft Vandalism) }
 
-  def self.search(search)
-    if search
-      services = Service.all
-      services = services.where(category: search[:":category"][","])
-      return services
-    else
-      Service.all
-    end
-  end
+  # def self.search(search)
+  #   if search
+  #     where(["name ILIKE ?", "%#{search}%"])
+  #     # services = Service.all
+  #     # services = services.where(category: search[:":category"][","])
+  #     # return services
+  #   else
+  #     all
+  #   end
+  # end
 end
