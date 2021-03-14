@@ -1,34 +1,28 @@
-<div class="text-center card-trip">
-  <div class="card-header">
-<h1>Job status for "<%= @job.service.name %>"</h1>
-<h2>Vendor: <%= @job.service.user.handle %></h2>
+<div class="container vh-100 mt-3">
+  <div class="card-trip rounded">
+    <% if @job.photo.attached? %>
+      <%= cl_image_tag @job.photo.key, class:"card-img-top", height: 300, width: 400 %>
+    <% else %>
+      <img class="card-img-top" src="https://source.unsplash.com/400x300/?<%= @job.description %>,<%= @job.status %>/300x200" />
+    <% end %>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= @job.service.name %></h2>
+        <p><strong>Category: </strong><%= @job.service.category %></p>
+        <p><strong>Description: </strong><%= @job.description %></p>
+        <p><strong>Requested by: </strong><%= @job.user.handle %></p>
+        <p><strong>Serviced by: </strong><%= @job.service.user.handle %></p>
+        <p><strong>Create date: </strong><%= @job.created_at.strftime('%F') %></p>
+      </div>
+      <div class="card-trip-pricing">
+        <h2>USD<%= @job.service.price %></h2>
+        <h2><%= @job.status %></h2>
+      </div>
+    </div>
+    <div class="container d-flex justify-content-center bg-light">
+      <div class="my-3">
+        <%= link_to "Delete", job_path(@job), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-danger " %>
+      </div>
+    </div>
   </div>
-<div class="card-body">
-<p>Requested on <%= @job.created_at %></p>
-
-<h3> Your instructions to <%= @job.service.user.handle %>: <%= @job.description %> </h2>
-<% if @job.service.photo.attached? %>
-  <%= cl_image_tag @job.service.photo.key, class:"card-img-top", height: 300, width: 400, crop: :fill %>
-<% end %>
-<h3> To be performed on: <%= @job.date %> </h3>
-<h3> Location: <%= @job.location %> </h3>
-<!-- TO DO add geocoding here -->
-<p> Status: <%= @job.status %> </p>
-<% if @job.review %>
-  <p> review: <%= @job.review.comment %> </p>
-  <p> review: <%= @job.review.rating %> </p>
-<% end %>
-
-
-<p> date: <%= @job.date %> </p>
-<p> location: <%= @job.location %> </p>
-<p> status: <%= @job.status %> </p>
-
-<!-- TO DO add reviews here -->
-<%# <p> review: <%= @job.review.comment %> </p> %>
-<%#  <p> review: <%= @job.review.rating %> </p> -->  %>
-</div>
-<div class="card-footer">
-<%=link_to "Leave your review", new_job_review_path(@job), class:"btn btn-secondary" %>
-</div>
 </div>
