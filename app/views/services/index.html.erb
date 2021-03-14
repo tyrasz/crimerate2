@@ -4,17 +4,19 @@
     <p class="lead text-muted">Here you can find all available services on CrimeRate</p>
     <div class="container">
       <%= form_tag(services_path, method:"get") do %>
-        <select name="search", class="form-control w-80 d-inline-block">
-          <option value="None">-Select-</option>
-          <option value="Burglary">Burglary</option>
-          <option value="Cybercrime">Cybercrime</option>
-          <option value="Drugs">Drugs</option>
-          <option value="Harassment">Harassment</option>
-          <option value="Homicide">Homicide</option>
-          <option value="Theft">Theft</option>
-          <option value="Vandalism">Vandalism</option>
-        </select>
-        <input type="submit" value="Filter">
+        <div class="input-group">
+          <select name="search", class="form-control">
+            <option value="None">-Select-</option>
+            <option value="Burglary">Burglary</option>
+            <option value="Cybercrime">Cybercrime</option>
+            <option value="Drugs">Drugs</option>
+            <option value="Harassment">Harassment</option>
+            <option value="Homicide">Homicide</option>
+            <option value="Theft">Theft</option>
+            <option value="Vandalism">Vandalism</option>
+          </select>
+          <%= submit_tag "Search",class:"btn btn-info glyphicon glyphicon-search ml-1" %>
+        </div>
       <% end %>
     </div>
   </div>
