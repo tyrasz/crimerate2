@@ -1,7 +1,8 @@
 
-<div class="container mx-3 justify-content-center">
-  <h1> <%= @service.name %> </h1>
-  <% if @service.photo.attached? %>
+<div>
+  <div class="card-header">
+    <h1> <%= @service.name %> </h1>
+    <% if @service.photo.attached? %>
     <%= cl_image_tag @service.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
 
@@ -17,15 +18,22 @@
 
   <%= link_to "Book this service!", new_service_job_path(@service), class:"btn btn-primary" %>
 
-<!--   <%= form_tag orders_path do %>
-    <%= hidden_field_tag 'service_id', @service.id %>
-    <%= submit_tag 'Hire me', class: 'btn btn-primary' %>
-  <% end %>
- -->
-  <br>
-  <%= link_to "Destroy!", service_path(@service), method: :delete, data: { confirm: "Tio boh?"}, class:"far fa-trash-alt"  %>
+  <%= form_tag orders_path do %>
+    <% end %>
+  </div>
 
-</div>
+
+  <div class="card-trip" >
+    <img src="https://source.unsplash.com/random/300x200" class="card-img-top" />
+    <div class="card-trip-infos">
+
+      <p class="card-trip-pricing" > Price: <%= @service.price %> </p>
+      <p class="card-text"> Category: <%= @service.category %> </p>
+      <%= link_to "Book this service!", new_service_job_path(@service), class:"btn btn-primary" %>
+      <%= link_to "Destroy!", service_path(@service), method: :delete, data: { confirm: "Tio boh?"}, class:"far fa-trash-alt", class:"btn btn-secondary"  %>
+      <br>
+    </div>
+  </div>
 
 
 
