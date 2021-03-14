@@ -13,12 +13,8 @@
     <option value="Vandalism">Vandalism</option>
   </select>
   <input type="submit" value="Submit">
-<%# end %> -->
-<div class="card-trip" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
-  <%#= text_field_tag :search,params[:search] %>
-  <%= submit_tag "Search", class:"form-control" %>
 <% end %>
-<div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
+<div class="cards mt-3">
 
   <% @services.each do |service| %>
     <div class=" text-center">
@@ -33,7 +29,7 @@
           <p class="card-text">By: <%= service.user.handle %></p>
           <p class="card-text">Price: $<%= service.price %></p>
           <p class="card-text">Category: <%= service.category %></p>
-          <div class="footer"> 
+          <div class="footer">
            <%= link_to "Book me!", service_path(service), class:"btn btn-primary" %>
           </div>
         </div>
