@@ -24,6 +24,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def show
+    render template: "pages/#{params[:page]}"
+  end
+
   def vendors
     # @vendors = User.where(role: 'vendor')
 
