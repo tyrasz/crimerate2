@@ -30,8 +30,23 @@ class JobsController < ApplicationController
     @job.user = current_user
     @job.service = @service
     authorize @job
-    if @job.save
-      redirect_to jobs_path
+    if @job.save!
+      order = Order.create!(job: @job, service_sku: @job.service.name, amount: @job.service.price, state: 'pending', user: current_user)
+
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        line_items: [{
+          name: @job.service.name,
+          amount: @job.service.price_cents,
+          currency: 'usd',
+          quantity: 1
+        }],
+        success_url: order_url(order),
+        cancel_url: order_url(order)
+      )
+
+      order.update(checkout_session_id: session.id)
+      redirect_to new_order_payment_path(order)
     else
       render :new
     end
