@@ -2,8 +2,9 @@
   <div class="row py-4">
     <div class="col">
       <h1>Checkout summary</h1>
-      <p>Payment to <strong><%= @order.service.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
-      <button id="pay" class="btn btn-primary">Pay</button>
+      <p style="color:red">You are one step away from commtting crime. Are you sure?</p>
+      <p>Make payment to <strong><%= @order.service_sku %></strong> paid to <strong><%= @order.job.service.user.handle %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+      <button id="pay" class="btn btn-primary cover">Proceed to pay</button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
         const paymentButton = document.getElementById('pay');
