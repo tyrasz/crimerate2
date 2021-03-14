@@ -1,16 +1,19 @@
 class ServicePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      if user.role == 'user'
+        scope.where(user: user)
+      else
+      end
     end
   end
 
   def index?
-    true
+    user.role == 'user'
   end
 
   def show?
-    true
+    user.role == 'user'
   end
 
   def new?
