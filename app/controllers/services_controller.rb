@@ -1,11 +1,12 @@
 class ServicesController < ApplicationController
   def index
+    @services = policy_scope(Service)
     if params[:search].present?
       @services = Service.where(["category ILIKE ?", "%#{params[:search]}%"])
     else
       @services = Service.all
     end
-    @services = policy_scope(@services)
+
   end
 
   def show

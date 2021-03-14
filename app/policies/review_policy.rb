@@ -35,5 +35,7 @@ class ReviewPolicy < ApplicationPolicy
 
   def destroy?
     user_id == job.user_id && user.role == 'vendor'
+    # user.id == record.user_id && user.role == 'user'
+
   end
 end
