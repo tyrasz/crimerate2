@@ -1,31 +1,48 @@
-<h1> Here are all your jobs </h1>
-
-  <div class="card-trip" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
-
-    <% @jobs.each do |job| %>
-      <div class=" text-center">
-        <div class="card h-100">
-          <% if job.photo.attached? %>
-            <%= cl_image_tag job.photo.key, class:"card-img-top", height: 300, width: 400, crop: :fill %>
-          <% else %>
-            <img class="card-img-top" src="https://source.unsplash.com/random/300x200" />
-          <% end %>
-          <div class="card-body">
-            <h4 class="card-title"><%= link_to job.service.name, job_path(job) %></h4>
-            <p class="card-text">By: <%= job.user.handle %></p>
-            <p class="card-text">Price: $<%= job.service.price %></p>
-            <p class="card-text">Category: <%= job.service.category %></p>
-            <%= link_to "See the job!", job_path(job), class:"btn btn-primary" %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+<section class="jumbotron text-center py-5">
+  <div class="container">
+    <h1 class="jumbotron-heading">My Jobs</h1>
+    <p class="lead text-muted">Here you can find all present and historical jobs that you are a part of</p>
+    <div class="container">
+      <%= form_tag(services_path, method:"get") do %>
+        <select name="search", class="form-control w-80 d-inline-block">
+          <option value="None">-Select-</option>
+          <option value="Burglary">Burglary</option>
+          <option value="Cybercrime">Cybercrime</option>
+          <option value="Drugs">Drugs</option>
+          <option value="Harassment">Harassment</option>
+          <option value="Homicide">Homicide</option>
+          <option value="Theft">Theft</option>
+          <option value="Vandalism">Vandalism</option>
+        </select>
+        <input type="submit" value="Filter">
+      <% end %>
+    </div>
   </div>
+</section>
 
-  <div id="map"
-      style="width: 100%; height: 600px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="album py-3 px-3 bg-light">
+  <h1>Jobs not yet started</h1>
+  <div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
+    <%= render @jobs.where("status='Not yet started'") %>
   </div>
+</div>
 
-<!-- </div> -->
+<div class="album py-3 px-3 bg-light">
+  <h1>Jobs in progress</h1>
+  <div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
+    <%= render @jobs.where("status='In progress'") %>
+  </div>
+</div>
+
+<div class="album py-3 px-3 bg-light">
+  <h1>Jobs completed</h1>
+  <div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
+    <%= render @jobs.where("status='Completed'") %>
+  </div>
+</div>
+
+<div id="map"
+    style="width: 100%; height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
