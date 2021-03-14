@@ -45,6 +45,19 @@ class JobsController < ApplicationController
     redirect_to jobs_path
   end
 
+  def nearby
+    @jobs = policy_scope(Job) && Job.where(status: "Completed")
+    @markers = @jobs.geocoded.map do |job|
+    {
+        lng: job.longitude,
+        lat: job.latitude,
+        # infoWindow: render_to_string(partial: "info_window", locals: { jobs: job })
+
+    }
+    end
+    authorize @jobs
+  end
+
   private
 
   def find_job
