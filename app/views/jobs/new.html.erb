@@ -1,8 +1,10 @@
-<h1> Booking This Job </h1>
-<%= simple_form_for [ @service, @job ] do |f| %>
-  <%= f.input :description %>
-  <%= f.input :date %>
-  <%= f.input :location %>
-  <%= f.button :submit, class: "btn btn-primary btn-block" %>
-<% end %>
+<div class="container vh-100 mt-3">
+  <h1> Booking This Job </h1>
+  <%= simple_form_for [ @service, @job ] do |f| %>
+    <%= f.input :description %>
+    <%= f.input :date %>
+    <%= f.input :location %>
+    <%= f.button :submit, class: "btn btn-primary btn-block" %>
+  <% end %>
+</div>
 
