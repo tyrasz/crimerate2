@@ -51,8 +51,7 @@ class JobsController < ApplicationController
     {
         lng: job.longitude,
         lat: job.latitude,
-        # infoWindow: render_to_string(partial: "info_window", locals: { jobs: job })
-
+        infoWindow: { content: render_to_string(partial: "info_window", locals: { job: job }) }
     }
     end
     authorize @jobs
