@@ -13,7 +13,7 @@
     <p class="card-text"><strong>Serviced by: </strong><%= job.service.user.handle %></p>
     <p class="card-text"><strong>Price paid: </strong>$<%= job.service.price %></p>
     <p class="card-text"><strong>Status: </strong><%= job.status %></p>
-    <p class="card-text"><strong>Create date:</strong><%= job.created_at.strftime('%F') %></p>
+    <p class="card-text"><strong>Create date: </strong><%= job.created_at.strftime('%F') %></p>
     <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">
         <%= link_to "View", job_path(job.id), class:"btn btn-sm btn-outline-secondary" %>

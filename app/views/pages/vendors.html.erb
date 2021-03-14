@@ -17,7 +17,7 @@
   <div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
     <% @vendors.each do |vendor| %>
       <div class="card mb-4 box-shadow">
-        <img class="card-img-top" src="https://source.unsplash.com/400x300/?<%= @vendors.sample %>,<%= @vendors.sample %>/300x200/" />
+        <img class="card-img-top" src="https://source.unsplash.com/400x300/?<%= @vendors.sample.handle %>/300x200/" />
 
         <div class="card-body">
           <h4 class="card-title"><%= link_to vendor.handle, vendor_path(vendor) %></h4>
