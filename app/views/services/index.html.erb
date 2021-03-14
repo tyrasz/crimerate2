@@ -1,26 +1,29 @@
-<h1>All Services</h1>
+<section class="jumbotron text-center py-5">
+  <div class="container">
+    <h1 class="jumbotron-heading">All services</h1>
+    <p class="lead text-muted">Here you can find all available services on CrimeRate</p>
+    <div class="container">
+      <%= form_tag(services_path, method:"get") do %>
+        <select name="search", class="form-control w-80 d-inline-block">
+          <option value="None">-Select-</option>
+          <option value="Burglary">Burglary</option>
+          <option value="Cybercrime">Cybercrime</option>
+          <option value="Drugs">Drugs</option>
+          <option value="Harassment">Harassment</option>
+          <option value="Homicide">Homicide</option>
+          <option value="Theft">Theft</option>
+          <option value="Vandalism">Vandalism</option>
+        </select>
+        <input type="submit" value="Filter">
+      <% end %>
+    </div>
+  </div>
+  <%= link_to 'Create a service', new_service_path, class:"btn btn-primary my-2" %>
+</section>
 
-<h3>Filter:</h3>
-<%= form_tag(services_path, method:"get") do %>
-  <select name="search", class="form-control">
-    <option value="None">-Select-</option>
-    <option value="Burglary">Burglary</option>
-    <option value="Cybercrime">Cybercrime</option>
-    <option value="Drugs">Drugs</option>
-    <option value="Harassment">Harassment</option>
-    <option value="Homicide">Homicide</option>
-    <option value="Theft">Theft</option>
-    <option value="Vandalism">Vandalism</option>
-  </select>
-  <input type="submit" value="Submit">
-<%# end %> -->
-<div class="card-trip" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
-  <%#= text_field_tag :search,params[:search] %>
-  <%= submit_tag "Search", class:"form-control" %>
-<% end %>
 <div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
 
-  <% @services.each do |service| %>
+<!--   <% @services.each do |service| %>
     <div class=" text-center">
       <div class="card h-100">
         <% if service.photo.attached? %>
@@ -33,12 +36,15 @@
           <p class="card-text">By: <%= service.user.handle %></p>
           <p class="card-text">Price: $<%= service.price %></p>
           <p class="card-text">Category: <%= service.category %></p>
-          <div class="footer"> 
+          <div class="footer">
            <%= link_to "Book me!", service_path(service), class:"btn btn-primary" %>
           </div>
         </div>
       </div>
     </div>
   <% end %>
-</div>
+ -->
+   <%= render @services %>
+
+ </div>
 

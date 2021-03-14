@@ -1,0 +1,23 @@
+<div class="card mb-4 box-shadow">
+  <% if service.photo.attached? %>
+    <%= cl_image_tag service.photo.key, class:"card-img-top", height: 300, width: 400, crop: :fill %>
+  <% else %>
+    <img class="card-img-top" src="https://source.unsplash.com/400x300/?<%= service.name %>,<%= service.category %>/300x200" />
+  <% end %>
+
+  <div class="card-body">
+    <h4 class="card-title"><%= link_to service.name, service_path(service) %></h4>
+    <p class="card-text">By: <%= service.user.handle %></p>
+    <p class="card-text">Price: $<%= service.price %></p>
+    <p class="card-text">Category: <%= service.category %></p>
+    <p class="card-text">Create date: <%= service.created_at.strftime('%F') %></p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <%= link_to "Book", service_path(service), class:"btn btn-sm btn-outline-secondary" %>
+        <%= link_to "Edit", edit_service_path(service), class:"btn btn-sm btn-outline-secondary" %>
+        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+      </div>
+    </div>
+  </div>
+</div>
