@@ -4,38 +4,45 @@
     <p class="lead text-muted">Here you can find all present and historical jobs that you are a part of</p>
     <div class="container">
       <%= form_tag(services_path, method:"get") do %>
-        <select name="search", class="form-control w-80 d-inline-block">
-          <option value="None">-Select-</option>
-          <option value="Burglary">Burglary</option>
-          <option value="Cybercrime">Cybercrime</option>
-          <option value="Drugs">Drugs</option>
-          <option value="Harassment">Harassment</option>
-          <option value="Homicide">Homicide</option>
-          <option value="Theft">Theft</option>
-          <option value="Vandalism">Vandalism</option>
-        </select>
-        <input type="submit" value="Filter">
+        <div class="input-group">
+          <select name="search", class="form-control w-80 d-inline-block">
+            <option value="None">-Select-</option>
+            <option value="Burglary">Burglary</option>
+            <option value="Cybercrime">Cybercrime</option>
+            <option value="Drugs">Drugs</option>
+            <option value="Harassment">Harassment</option>
+            <option value="Homicide">Homicide</option>
+            <option value="Theft">Theft</option>
+            <option value="Vandalism">Vandalism</option>
+          </select>
+          <%= submit_tag "Search",class:"btn btn-info glyphicon glyphicon-search ml-1" %>
+        </div>
       <% end %>
+      <p>
+        <a href="#nys" class="btn btn-primary my-2">Jobs not yet started</a>
+        <a href="#progress" class="btn btn-success my-2">Jobs in progress</a>
+        <a href="#completed" class="btn btn-secondary my-2">Jobs completed</a>
+      </p>
     </div>
   </div>
 </section>
 
 <div class="album py-3 px-3 bg-light">
-  <h1>Jobs not yet started</h1>
+  <h1 id="nys">Jobs not yet started</h1>
   <div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
     <%= render @jobs.where("status='Not yet started'") %>
   </div>
 </div>
 
 <div class="album py-3 px-3 bg-light">
-  <h1>Jobs in progress</h1>
+  <h1 id="progress">Jobs in progress</h1>
   <div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
     <%= render @jobs.where("status='In progress'") %>
   </div>
 </div>
 
 <div class="album py-3 px-3 bg-light">
-  <h1>Jobs completed</h1>
+  <h1 id="completed">Jobs completed</h1>
   <div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
     <%= render @jobs.where("status='Completed'") %>
   </div>
