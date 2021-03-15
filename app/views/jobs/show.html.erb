@@ -19,7 +19,7 @@
         <h2><%= @job.status %></h2>
       </div>
     </div>
-    <div class="container d-flex justify-content-center bg-light">
+    <div class="container d-flex justify-content-center" style="background-color: #edffec;">
       <div class="my-3">
         <%= link_to "Reviews", job_reviews_path(@job), class:"btn btn-primary" %>
         <%= link_to "Add review", new_job_review_path(@job), class:"btn btn-success" %>
