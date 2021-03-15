@@ -29,6 +29,7 @@ class JobsController < ApplicationController
     @service = Service.find(params[:service_id])
     @job.user = current_user
     @job.service = @service
+    @job.status = "Not yet started"
     authorize @job
     if @job.save!
       order = Order.create!(job: @job, service_sku: @job.service.name, amount: @job.service.price, state: 'pending', user: current_user)
