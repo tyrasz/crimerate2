@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
+  def about
+  end
+
   def vendors_show
     @vendor = User.where(role: 'vendor') && User.find(params[:id])
   end

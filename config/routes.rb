@@ -9,25 +9,18 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   get '/search', to: 'pages#search', as: 'search_page'
-
+  get "/about", to: "pages#about", as: 'about_page'
 
   get '/jobs/nearby', to: 'jobs#nearby', as: 'jobs_nearby'
-  get "/pages/:page" => "pages#show"
 
 
   resources :jobs, only: [:index, :show, :destroy] do
-    resources :reviews, only: [ :new, :create ]
+    resources :reviews, only: [ :new, :create, :index ]
   end
-
-  # resources :jobs, only: [:index, :new, :create ]
 
 
   resources :services do
     resources :jobs, only: [:new, :create]
-  end
-
-  resources :jobs, only: [:index, :show] do
-    resources :reviews, only: [ :new, :create, :index ]
   end
 
   resources :users, only: [ :show ] #revert back
