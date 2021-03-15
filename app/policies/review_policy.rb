@@ -14,7 +14,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    (record.job.user == user || record.job.service.user == user) && record.job.status == 'Completed'
     # (user == record.user && user.role == 'user') || (user == record.user && user.role == 'vendor')
   end
 

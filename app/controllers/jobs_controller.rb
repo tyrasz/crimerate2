@@ -30,6 +30,7 @@ class JobsController < ApplicationController
     @job.user = current_user
     @job.service = @service
     authorize @job
+    raise
     if @job.save!
       order = Order.create!(job: @job, service_sku: @job.service.name, amount: @job.service.price, state: 'pending', user: current_user)
 
