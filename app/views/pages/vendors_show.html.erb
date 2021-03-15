@@ -10,17 +10,20 @@
         <div class="card">
           <h2>Hi, I'm <%= @vendor.handle %></h2>
           <h5><%= @vendor.description %></h5>
-          <div class="fakeimg" style="height:200px;"></div>
+          <div>
+            <img class="fakeimg" src="https://source.unsplash.com/collection/iFgRcqHznqg" style="height:200px;">
+          </div>
         </div>
       </div>
       
       <div class="rightcolumn">
         <div class="card">
-          <h5>Location</h5>
-          <p class="card-text"><%= @vendor.location %></p>
           <h2>About Me</h2>
-          <div class="fakeimg" style="height:100px;"></div>
-          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+          <div class="fakeimg" style="height:100px;">
+            <h5>Location</h5>
+            <p class="card-text"><%= @vendor.location %></p>
+          </div>
+          <p>Some text about me </p>
         </div>
       </div>
     </div>
