@@ -34,6 +34,10 @@ class JobPolicy < ApplicationPolicy
     edit?
   end
 
+  def nearby?
+    user.role == 'user'
+  end
+
   def destroy?
     user.id == record.user_id && user.role == 'vendor'
   end

@@ -46,7 +46,7 @@ class JobsController < ApplicationController
       )
 
       order.update(checkout_session_id: session.id)
-      redirect_to new_order_payment_path(order)
+      redirect_to new_order_payment_path(order), alert: "Your job has been created!"
     else
       render :new
     end
@@ -58,6 +58,18 @@ class JobsController < ApplicationController
     @job.destroy
 
     redirect_to jobs_path
+  end
+
+  def nearby
+    @jobs = policy_scope(Job) && Job.where(status: "Completed")
+    @markers = @jobs.geocoded.map do |job|
+    {
+        lng: job.longitude,
+        lat: job.latitude,
+        infoWindow: { content: render_to_string(partial: "info_window", locals: { job: job }) }
+    }
+    end
+    authorize @jobs
   end
 
   private

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get '/search', to: 'pages#search', as: 'search_page'
 
 
+  get '/jobs/nearby', to: 'jobs#nearby', as: 'jobs_nearby'
+  get "/pages/:page" => "pages#show"
+
+
   resources :jobs, only: [:index, :show, :destroy] do
     resources :reviews, only: [ :new, :create ]
   end

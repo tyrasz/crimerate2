@@ -1,30 +1,29 @@
-<section class="jumbotron text-center py-5" style="background-color: #d3e0ea;">
-  <div class="container">
-    <h1 class="jumbotron-heading">All services</h1>
-    <p class="lead text-muted">Here you can find all available services on CrimeRate</p>
-    <div class="container">
-      <%= form_tag(services_path, method:"get") do %>
-        <div class="input-group">
-          <select name="search", class="form-control">
-            <option value="None">-Select-</option>
-            <option value="Burglary">Burglary</option>
-            <option value="Cybercrime">Cybercrime</option>
-            <option value="Drugs">Drugs</option>
-            <option value="Harassment">Harassment</option>
-            <option value="Homicide">Homicide</option>
-            <option value="Theft">Theft</option>
-            <option value="Vandalism">Vandalism</option>
+<section class=“jumbotron text-center py-5” style=“background-color: #D3E0EA;“>
+  <div class=“container”>
+    <h1 class=“jumbotron-heading”>All services</h1>
+    <p class=“lead text-muted”>Here you can find all available services on CrimeRate</p>
+    <div class=“container”>
+      <%= form_tag(services_path, method:“get”) do %>
+        <div class=“input-group”>
+          <select name=“search”, class=“form-control”>
+            <option value=“None”>-Select-</option>
+            <option value=“Burglary”>Burglary</option>
+            <option value=“Cybercrime”>Cybercrime</option>
+            <option value=“Drugs”>Drugs</option>
+            <option value=“Harassment”>Harassment</option>
+            <option value=“Homicide”>Homicide</option>
+            <option value=“Theft”>Theft</option>
+            <option value=“Vandalism”>Vandalism</option>
           </select>
-          <%= submit_tag "Search",class:"btn btn-info glyphicon glyphicon-search ml-1" %>
+          <%= submit_tag “Search”,class:“btn btn-info glyphicon glyphicon-search ml-1" %>
         </div>
       <% end %>
-      <%= link_to 'Create your own service', new_service_path, class:"btn btn-primary btn-block mt-2" %>
+      <%= link_to ‘Create your own service’, new_service_path, class:“btn btn-primary btn-block mt-2” %>
     </div>
   </div>
 </section>
-
-<div class="album py-3 px-3 bg-light">
-  <div class="cards mt-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px">
+<div class=“album py-3 px-3 bg-light”>
+  <div class=“cards mt-3” style=“display:grid; grid-template-columns: 1fr 1fr 1fr; grid-gap:10px”>
      <%= render @services %>
   </div>
 </div>

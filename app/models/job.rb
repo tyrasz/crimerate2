@@ -8,6 +8,7 @@ class Job < ApplicationRecord
   has_one_attached :photo
   
   has_one :review, dependent: :destroy
+  has_one_attached :photo
   has_many :orders
 
   geocoded_by :location
