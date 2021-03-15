@@ -1,3 +1,21 @@
-<h1>Show all reviews </h1>
+<div class="py-3" style="background-color: #edffec;">
+  <div class="container">
+    <h1>All reviews</h1>
+    <%= link_to 'New review', new_job_review_path(params[:job_id]), class:"btn btn-primary" %>
+  </div>
+</div>
 
-<%= render @reviews %>
+<div class="container mt-3">
+  <% @reviews.each do |review| %>
+    <div class="card-product rounded my-2" style="height: 10em;">
+      <div class="card-product-infos">
+        <p><%= review.comment %></p>
+        <p><em>Rated by: <%= review.user.handle %></em></p>
+        <% review.rating.to_i.times do %>
+          <i class="fas fa-star" style="color:gold;"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+

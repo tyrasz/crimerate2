@@ -30,12 +30,12 @@ Rails.application.routes.draw do
     resources :reviews, only: [ :new, :create, :index ]
   end
 
-  # resources :jobs, only: [:index, :new, :create ]
-
   resources :users, only: [ :show ] #revert back
 
   # vendor route to find vendor
-  get '/vendors/:id', to: 'pages#vendors_show', as: 'vendor'
+  get '/vendors/:id', to: 'pages#vendors_show', as: 'vendor' do
+    resources :reviews, only: [ :index ]
+  end
 
   # vendors routes to show available vendors
   get '/vendors', to: 'pages#vendors', as: 'vendors'

@@ -1,6 +1,11 @@
 class ReviewsController < ApplicationController
   def index
     @reviews = policy_scope(Review)
+    if params[:job_id]
+      @reviews = Review.where(:job_id => params[:job_id])
+    else
+      @reviews = Review.all
+    end
   end
 
   def show
@@ -9,21 +14,21 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @job = Job.find(params[:job_id])
     @review = Review.new
+    @job = Job.find(params[:job_id])
     @user = User.new
 
-    authorize @review ## add after youve found the review
+    authorize @review
   end
 
   def create
-    @job = Job.find(params[:job_id])
     @review = Review.new(review_params)
+    @job = Job.find(params[:job_id])
+    @review.job = @job
     @review.user = current_user
     authorize @review
-    # raise
-    if @review.save
-      redirect_to reviews_path
+    if @review.save!
+      redirect_to job_reviews_path(@job)
     else
       render :new
     end

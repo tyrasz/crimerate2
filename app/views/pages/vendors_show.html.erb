@@ -1,60 +1,19 @@
-<h1>This is a vendor</h1>
-
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><%= @vendor.handle %></h5>
-    <p class="card-text"><%= @vendor.description %></p>
-    <p class="card-text"><%= @vendor.location %></p>
-
-    <%= link_to "Go back", vendors_path %>
-
-    <p class="card-text">Ratings go here</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<!-- 
-<h1>These are my open jobs</h1>
-
-<% @open_jobs = @vendor.jobs.where(status: "Not yet started" || "In progress") %>
-<% @completed_jobs = @vendor.jobs.where(status: "Completed") %>
-
-<div class="cards" style="display: grid; grid-template-colums: 1fr 1fr; grid-gap: 15px;">
-
-
-  <% @open_jobs.each do |job| %>
-  <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"><%= job.description %></h5>
-      <p class="card-text"><%= job.location %></p>
-      <p class="card-text"><%= job.status %></p>
-
-      <p class="card-text">Ratings go here</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="container vh-100 mt-3">
+  <div class="card-trip rounded">
+    <img class="card-img-top" src="https://source.unsplash.com/400x300/?<%= @vendor.handle %>,<%= @vendor.description %>/300x200" />
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= @vendor.handle %></h2>
+        <p><strong>Description: </strong><%= @vendor.description %></p>
+        <p><strong>Area of operation: </strong><%= @vendor.location %></p>
+      </div>
+      <h2 class="card-trip-pricing">rating</h2>
+    </div>
+    <div class="container d-flex justify-content-center", style="background-color: #d3e0ea;">
+      <div class="my-3">
+        <%= link_to "My services", services_path(@vendor), class:"btn btn-primary" %>
+        <%# link_to "My reviews", reviews_path(@vendor), class:"btn btn-primary" %>
+      </div>
     </div>
   </div>
-  <% end %>
 </div>
-
-<br />
-
-<h1>These are my closed jobs</h1>
-
-<div class="cards" style="display: grid; grid-template-colums: 1fr 1fr; grid-gap: 15px;">
-
-
-  <% @completed_jobs.each do |job| %>
-  <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"><%= job.description %></h5>
-      <p class="card-text"><%= job.location %></p>
-      <p class="card-text"><%= job.status %></p>
-
-      <p class="card-text">Ratings go here</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-  <% end %>
-</div> -->

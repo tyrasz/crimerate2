@@ -1,37 +1,24 @@
-
-<div>
-  <div class="card-header">
-    <h1> <%= @service.name %> </h1>
+<div class="container vh-100 mt-3">
+  <div class="card-trip rounded">
     <% if @service.photo.attached? %>
-    <%= cl_image_tag @service.photo.key, height: 300, width: 400, crop: :fill %>
-
+      <%= cl_image_tag @service.photo.key, class:"card-img-top", height: 300, width: 400 %>
+    <% else %>
+      <img class="card-img-top" src="https://source.unsplash.com/400x300/?<%= @service.name %>,<%= @service.category %>/300x200" />
     <% end %>
-  </div>
-  
-  
-  <div class="card-trip" >
-    <img src="https://source.unsplash.com/random/300x200" class="card-img-top" />
     <div class="card-trip-infos">
-      
-      <p class="card-trip-pricing" > Price: <%= @service.price %> </p>
-      <p class="card-text"> Category: <%= @service.category %> </p>
-      <%= link_to "Book this service!", new_service_job_path(@service), class:"btn btn-primary" %>
-      <%= link_to "Destroy!", service_path(@service), method: :delete, data: { confirm: "Tio boh?"}, class:"far fa-trash-alt", class:"btn btn-secondary"  %>
-      <br>
+      <div>
+        <h2><%= @service.name %></h2>
+        <p><strong>Category: </strong><%= @service.category %></p>
+        <p><strong>Service by: </strong><%= @service.user.handle %></p>
+      </div>
+      <h2 class="card-trip-pricing">USD<%= @service.price %></h2>
+    </div>
+    <div class="container d-flex justify-content-center" style="background-color: #d3e0ea;">
+      <div class="my-3">
+        <%= link_to "Book", new_service_job_path(@service), class:"btn btn-primary " %>
+        <%= link_to "Delete", service_path(@service), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-danger " %>
+      </div>
     </div>
   </div>
-  <!-- if role = "user" link to create new job form -->
-  <%= form_tag orders_path do %>
-
-    <%= hidden_field_tag 'service_id', @service.id %>
-    <%= submit_tag 'Hire me', class: 'btn btn-primary' %>
-  <% end %>
- -->
-  <br>
-  <%= link_to "Destroy!", service_path(@service), method: :delete, data: { confirm: "Tio boh?"}, class:"far fa-trash-alt"  %>
 </div>
-
-
-
-
 
