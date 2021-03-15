@@ -6,7 +6,6 @@ class ServicesController < ApplicationController
     else
       @services = Service.all
     end
-
   end
 
   def show
