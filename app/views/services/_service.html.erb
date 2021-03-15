@@ -13,9 +13,12 @@
     <p class="card-text"><strong>Create date: </strong><%= service.created_at.strftime('%F') %></p>
     <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">
-        <%= link_to "Book", service_path(service), class:"btn btn-sm btn-outline-secondary" %>
-        <%= link_to "Edit", edit_service_path(service), class:"btn btn-sm btn-outline-secondary" %>
-        <%= link_to "Delete", service_path(service), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-sm btn-outline-secondary" %>
+        <% if current_user.role == "user" %>
+          <%= link_to "Book", service_path(service), class:"btn btn-sm btn-outline-secondary" %>
+        <% elsif current_user.role == "vendor" && current_user == service.user %>
+          <%= link_to "Edit", edit_service_path(service), class:"btn btn-sm btn-outline-secondary" %>
+          <%= link_to "Delete", service_path(service), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-sm btn-outline-secondary" %>
+        <% end %>
       </div>
     </div>
   </div>
