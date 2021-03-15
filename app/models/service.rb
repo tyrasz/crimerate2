@@ -1,6 +1,6 @@
 class Service < ApplicationRecord
   belongs_to :user
-  has_many :jobs
+  has_many :jobs, dependent: :destroy
   has_many :reviews, through: :jobs
   has_one_attached :photo
 
