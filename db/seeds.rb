@@ -2,6 +2,7 @@ require 'faker'
 
 puts "Cleaning database"
 Review.destroy_all
+Order.destroy_all
 Job.destroy_all
 Service.destroy_all
 User.destroy_all

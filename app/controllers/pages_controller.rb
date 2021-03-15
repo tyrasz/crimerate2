@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
 
   def home
+    # raise
     if current_user
       @banner = true
       # render :home --> this now routes to _banner partial
@@ -24,6 +25,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def show
+    render template: "pages/#{params[:page]}"
+  end
+
   def vendors
     # @vendors = User.where(role: 'vendor')
 
@@ -32,5 +37,6 @@ class PagesController < ApplicationController
     else
       @vendors = User.where(role: 'vendor')
     end
+    # @vendors = policy_scope(@vendors)
   end
 end
