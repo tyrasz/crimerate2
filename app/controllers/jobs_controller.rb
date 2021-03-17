@@ -54,7 +54,7 @@ class JobsController < ApplicationController
 
   def destroy
     @job = find_job
-    authorize @job
+    skip_authorization
     @job.destroy
 
     redirect_to jobs_path
