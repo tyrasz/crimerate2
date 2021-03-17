@@ -1,0 +1,21 @@
+<h1>Here is your order!</h1>
+
+
+
+<table style="width:100%">
+  <tr>
+    <th>Order</th>
+    <th>Vendor</th>
+    <th>Amount</th>
+    <th>Date</th>
+  </tr>
+  <tr>
+    <td><%= @order.id %></td>
+    <td><%= @order.job.service.user.handle %></td>
+    <td>$<%= @order.amount_cents / 100.00 %></td>
+    <td><%= @order.job.date %></td>
+  </tr>
+
+</table>
+
+<p>User: <%= @user.handle %></p>
