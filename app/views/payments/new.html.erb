@@ -1,20 +1,22 @@
-<div class="container">
-  <div class="row py-4">
-    <div class="col">
+<div class="container vh-100">
+  <div class="card-product mt-3 rounded">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-product-infos">
       <h1>Checkout summary</h1>
-      <p style="color:red">You are one step away from commtting crime. Are you sure?</p>
-      <p>Make payment to <strong><%= @order.service_sku %></strong> paid to <strong><%= @order.job.service.user.handle %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
-      <button id="pay" class="btn btn-primary cover">Proceed to pay</button>
-      <script src="https://js.stripe.com/v3/"></script>
-      <script>
-        const paymentButton = document.getElementById('pay');
-        paymentButton.addEventListener('click', () => {
-          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-          stripe.redirectToCheckout({
-            sessionId: '<%= @order.checkout_session_id %>'
+        <p style="color:red">You are one step away from commtting crime. Are you sure?</p>
+        <p>Make payment to <strong><%= @order.service_sku %></strong> paid to <strong><%= @order.job.service.user.handle %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+        <button id="pay" class="btn btn-primary cover">Proceed to pay</button>
+        <script src="https://js.stripe.com/v3/"></script>
+        <script>
+          const paymentButton = document.getElementById('pay');
+          paymentButton.addEventListener('click', () => {
+            const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+            stripe.redirectToCheckout({
+              sessionId: '<%= @order.checkout_session_id %>'
+            });
           });
-        });
-      </script>
-    </div>
+        </script>
+     </div>
   </div>
 </div>
+

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
+  <div class="container-fluid">
     <%= link_to "CrimeRate", root_path, class: "navbar-brand" %>
 <!-- search bar -->
     <%= form_tag(search_page_path, :method => "get",
@@ -7,7 +7,7 @@
       <div class="input-group">
         <%= search_field_tag :search, params[:search], placeholder: "Global search", class: "form-control" %>
         <div class="input-group-btn">
-          <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+          <%= button_tag "Search", class:"btn btn-info glyphicon glyphicon-search ml-2",:name => nil%>
         </div>
       </div>
     <% end %>

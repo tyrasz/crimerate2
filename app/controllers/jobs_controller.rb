@@ -29,6 +29,7 @@ class JobsController < ApplicationController
     @service = Service.find(params[:service_id])
     @job.user = current_user
     @job.service = @service
+    @job.status = "Not yet started"
     authorize @job
     if @job.save!
       order = Order.create!(job: @job, service_sku: @job.service.name, amount: @job.service.price, state: 'pending', user: current_user)
@@ -58,6 +59,18 @@ class JobsController < ApplicationController
     @job.destroy
 
     redirect_to jobs_path
+  end
+
+  def nearby
+    @jobs = policy_scope(Job) && Job.where(status: "Completed")
+    @markers = @jobs.geocoded.map do |job|
+    {
+        lng: job.longitude,
+        lat: job.latitude,
+        infoWindow: { content: render_to_string(partial: "info_window", locals: { job: job }) }
+    }
+    end
+    authorize @jobs
   end
 
   private

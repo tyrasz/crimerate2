@@ -15,15 +15,22 @@
 
   <body>
 
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= render 'shared/banner' if @banner %>
-    <%= render 'shared/splash' if @splash %>
-    <div class="container">
-     <%= yield %>
-     <script src="vendor/jquery/jquery.min.js"></script>
-     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-     </div>
+    <header>
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+      <%= render 'shared/banner' if @banner %>
+      <%= render 'shared/splash' if @splash %>
+    </header>
 
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="bg-dark">
+      <%= render 'shared/footer' %>
+    </footer>
+
+   <script src="vendor/jquery/jquery.min.js"></script>
+   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

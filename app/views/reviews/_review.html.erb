@@ -1,4 +1,9 @@
-<h1>Review</h1>
-
-<%= review.comment %>
-<%= review.rating %>
+<div class="card-product rounded my-2" style="height: 10em;">
+  <div class="card-product-infos">
+    <p><%= review.comment %></p>
+    <p><em>Rated by: <%= review.user.handle %></em></p>
+    <% review.rating.to_i.times do %>
+      <i class="fas fa-star" style="color:gold;"></i>
+    <% end %>
+  </div>
+</div>
