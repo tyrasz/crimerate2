@@ -16,6 +16,7 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @job = Job.find(params[:job_id])
+    @review.job = @job
     @user = User.new
 
     authorize @review
