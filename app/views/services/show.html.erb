@@ -15,8 +15,11 @@
     </div>
     <div class="container d-flex justify-content-center" style="background-color: #d3e0ea;">
       <div class="my-3">
-        <%= link_to "Book", new_service_job_path(@service), class:"btn btn-primary " %>
-        <%= link_to "Delete", service_path(@service), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-danger " %>
+        <% if current_user.role == "user" %>
+          <%= link_to "Book", new_service_job_path(@service), class:"btn btn-primary " %>
+        <% elsif current_user.role == "vendor" && current_user == @service.user %>
+          <%= link_to "Delete", service_path(@service), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-danger " %>
+        <% end %>
       </div>
     </div>
   </div>

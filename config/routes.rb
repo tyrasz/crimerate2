@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :jobs, only: [:new, :create]
   end
 
+
   resources :users, only: [ :show ] #revert back
 
   # vendor route to find vendor
@@ -32,6 +33,8 @@ Rails.application.routes.draw do
 
   # vendors routes to show available vendors
   get '/vendors', to: 'pages#vendors', as: 'vendors'
+
+  get '/vendors/:id/services', to: 'services#byvendors', as: 'byvendors'
 
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new
