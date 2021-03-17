@@ -54,6 +54,12 @@ class ServicesController < ApplicationController
     redirect_to services_path
   end
 
+  def byvendors
+    @vendor = User.find(params[:id])
+    @services = @vendor.services
+    skip_authorization
+  end
+
   private
 
   def service_params
