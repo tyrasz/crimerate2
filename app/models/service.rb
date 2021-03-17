@@ -20,7 +20,11 @@ class Service < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+  def have_ratings?
+    !self.reviews.empty?
+  end
+
   def avg_ratings
-    self.reviews.average(:rating)
+     self.reviews.average(:rating)
   end
 end
