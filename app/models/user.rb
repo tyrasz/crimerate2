@@ -21,7 +21,13 @@ class User < ApplicationRecord
   validates :role, presence: true, inclusion: { in: ['vendor', 'user'] }
 
   has_many :services, dependent: :destroy
+  has_many :jobs, through: :services
+  has_many :vendor_reviews, through: :jobs, source: :review
   has_many :reviews, dependent: :destroy
-  has_many :jobs, dependent: :destroy
+
   has_many :orders
+
+  def avg_ratings
+    self.vendor_reviews.average(:rating)
+  end
 end

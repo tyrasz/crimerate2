@@ -11,7 +11,14 @@
         <p><strong>Category: </strong><%= @service.category %></p>
         <p><strong>Service by: </strong><%= @service.user.handle %></p>
       </div>
-      <h2 class="card-trip-pricing">USD<%= @service.price %></h2>
+      <div class="card-trip-pricing">
+        <h2>USD<%= @service.price %></h2>
+        <h2>Rating:
+          <% @service.avg_ratings.round.times do %>
+            <i class="fas fa-star" style="color:gold;"></i>
+          <% end %>
+        </h2>
+      </div>
     </div>
     <div class="container d-flex justify-content-center" style="background-color: #d3e0ea;">
       <div class="my-3">

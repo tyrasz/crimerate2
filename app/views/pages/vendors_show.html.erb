@@ -62,7 +62,11 @@
         <p><strong>Description: </strong><%= @vendor.description %></p>
         <p><strong>Area of operation: </strong><%= @vendor.location %></p>
       </div>
-      <h2 class="card-trip-pricing">rating</h2>
+      <h2 class="card-trip-pricing">Rating:
+        <% @vendor.avg_ratings.round.times do %>
+          <i class="fas fa-star" style="color:gold;"></i>
+        <% end %>
+      </h2>
     </div>
     <div class="container d-flex justify-content-center", style="background-color: #d3e0ea;">
       <div class="my-3">
