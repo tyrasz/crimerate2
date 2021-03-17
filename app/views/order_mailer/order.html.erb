@@ -1,0 +1,12 @@
+<p>Hi <%= @user.handle %>,</p>
+
+<p>Thanks for your order again!</p>
+
+<p>Here are the details of your order</p>
+
+<p>Order: <%= @order.service_sku %></p>
+<p>Status: <%= @order.state %></p>
+<p>Amount: $<%= @order.amount_cents / 100.00 %></p>
+<p>Vendor: <%= @order.job.service.user.handle %></p>
+
+<p>See ya!</p>
