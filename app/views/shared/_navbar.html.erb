@@ -35,9 +35,12 @@
           </li>
 <!-- dropdown -->
           <li class="nav-item dropdown">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% if current_user.role == "vendor" %>
-                <span class="badge badge-pill badge-secondary">Vendor</span>
+                <%= image_tag "avatar-vendor.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <span class="badge badge-pill badge-danger">Vendor</span>
+              <% elsif current_user.role == "user" %>
+                <%= image_tag "avatar-user.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <span class="badge badge-pill badge-secondary">User</span>
               <% end %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <% if current_user.role == "vendor" %>
