@@ -15,7 +15,6 @@ class JobsController < ApplicationController
     @service = Service.find(params[:service_id])
     @job = Job.new
     @job.user = current_user
-
     authorize @job
   end
 
