@@ -40,8 +40,6 @@ Rails.application.routes.draw do
     resources :payments, only: :new
   end
 
-  get '/vendors/:id/services', to: 'services#byvendors', as: 'byvendors'
-
   mount StripeEvent::Engine, at: '/stripe-webhooks'
 
 end
