@@ -16,53 +16,36 @@
   </div>
 </section>
 
-  <div class="container mt-3" style="padding: 0 16px;">
-    <h2 style="text-align:center">Our Team</h2>
-      <div class="column" class="wrapper">
-        <div class="card">
-          <!-- <img src="" alt="Jane" style="width:100%"> -->
-          <div class="container">
-            <h2>Hwa Jie</h2>
-            <p class="title">Criminal genius</p>
-            <p>People say nothing is impossible, but I do nothing every day.</p>
-            <p><button class="btn btn-primary btn-block">Contact</button></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="column">
-        <div class="card">
-          <!-- <img src="" alt="Mike" style="width:100%"> -->
-          <div class="container">
-            <h2>Zhi Kai</h2>
-            <p class="title">Crime director</p>
-            <p>All the things I really like to do are either immoral, illegal or fattening.</p>
-            <p><button class="btn btn-primary btn-block">Contact</button></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="column">
-        <div class="card">
-          <!-- <img src="" alt="John" style="width:100%"> -->
-          <div class="container">
-            <h2>Shu</h2>
-            <p class="title">Security director</p>
-            <p>The average dog is a nicer person than the average person.</p>
-            <p><button class="btn btn-primary btn-block">Contact</button></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="column">
-          <div class="card">
-            <!-- <img src="" alt="Mike" style="width:100%"> -->
-            <div class="container">
-              <h2>Margarita</h2>
-              <p class="title">Joker</p>
-              <p>If you’re going to tell people the truth, be funny or they’ll kill you.</p>
-              <p><button class="btn btn-primary btn-block">Contact</button></p>
-            </div>
-          </div>
-        </div>
+<div class="container mt-3">
+  <h2 style="text-align:center">Our Team</h2>
+  <div class="row">
+    <div class="col-lg-5 m-3">
+      <%= image_tag "hwa.jpg", class:"rounded-circle profile-pic" %>
+      <h2>Hwa Jie</h2>
+      <h4 class="text-muted">Criminal Genius</h4>
+      <p class="text-muted">People say nothing is impossible, but I do nothing every day.</p>
+      <%= link_to 'View details', 'https://github.com/hjsoh', class:"btn btn-primary" %>
     </div>
+    <div class="col-lg-5 m-3">
+      <%= image_tag "zhikai.jpg", class:"rounded-circle profile-pic" %>
+      <h2>Zhi Kai</h2>
+      <h4 class="text-muted">Crime director</h4>
+      <p class="text-muted">All the things I really like to do are either immoral, illegal or fattening.</p>
+      <%= link_to 'View details', 'https://github.com/tyrasz', class:"btn btn-primary" %>
+    </div>
+    <div class="col-lg-5 m-3">
+      <%= image_tag "shu.jpg", class:"rounded-circle profile-pic" %>
+      <h2>Shu-Yi</h2>
+      <h4 class="text-muted">Security director</h4>
+      <p class="text-muted">The average dog is a nicer person than the average person.</p>
+      <%= link_to 'View details', 'https://github.com/ispasmic', class:"btn btn-primary" %>
+    </div>
+    <div class="col-lg-5 m-3">
+      <%= image_tag "marg.jpg", class:"rounded-circle profile-pic" %>
+      <h2>Margarita</h2>
+      <h4 class="text-muted">Creative director</h4>
+      <p class="text-muted">If you’re going to tell people the truth, be funny or they’ll kill you.</p>
+      <%= link_to 'View details', 'https://github.com/Margscodes', class:"btn btn-primary" %>
+    </div>
+  </div>
+</div>
