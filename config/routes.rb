@@ -24,12 +24,6 @@ Rails.application.routes.draw do
     resources :jobs, only: [:new, :create, :edit, :update]
   end
 
-  # resources :services do
-  #   collection do
-  #     get :top
-  #   end
-  # end
-
   resources :users, only: [ :show ] #revert back
 
   # vendor route to find vendor
