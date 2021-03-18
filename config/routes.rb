@@ -13,12 +13,12 @@ Rails.application.routes.draw do
 
   get '/jobs/nearby', to: 'jobs#nearby', as: 'jobs_nearby'
 
-  resources :jobs, only: [:index, :show, :destroy] do
+  resources :jobs, only: [:index, :show, :edit, :update, :destroy] do
     resources :reviews, only: [ :new, :create, :index ]
   end
 
   resources :services do
-    resources :jobs, only: [:new, :create]
+    resources :jobs, only: [:new, :create, :edit, :update]
   end
 
   resources :users, only: [ :show ] #revert back
