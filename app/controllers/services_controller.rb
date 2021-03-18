@@ -61,10 +61,21 @@ class ServicesController < ApplicationController
   end
 
   def top
-    @services = Service.all.each do |e|
-      e.avg_ratings
+    services = Service.all.select do |service|
+      service.have_ratings?
     end
-    raise
+
+    skip_authorization
+
+    ratings = services.map do |service|
+      service.avg_ratings
+    end
+
+    service_ratings = Hash[services.zip(ratings)].sort_by(&:last).reverse!
+    top = service_ratings.map do |service|
+      service[0] if service[1] == 5
+    end
+    @top = top.compact
   end
 
   private
