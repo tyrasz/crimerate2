@@ -60,6 +60,13 @@ class ServicesController < ApplicationController
     skip_authorization
   end
 
+  def top
+    @services = Service.all.each do |e|
+      e.avg_ratings
+    end
+    raise
+  end
+
   private
 
   def service_params

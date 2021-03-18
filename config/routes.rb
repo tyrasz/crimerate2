@@ -18,8 +18,17 @@ Rails.application.routes.draw do
   end
 
   resources :services do
+    collection do
+      get :top
+    end
     resources :jobs, only: [:new, :create, :edit, :update]
   end
+
+  # resources :services do
+  #   collection do
+  #     get :top
+  #   end
+  # end
 
   resources :users, only: [ :show ] #revert back
 
