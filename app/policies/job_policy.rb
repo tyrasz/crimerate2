@@ -27,7 +27,7 @@ class JobPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.id == record.user_id && user.role == 'vendor'
+    user.id == record.service.user_id && user.role == 'vendor'
   end
 
   def update?

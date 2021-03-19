@@ -1,4 +1,4 @@
-<div class="container vh-100 mt-3">
+<div class="container py-3">
   <div class="card-trip rounded">
     <% if @job.photo.attached? %>
       <%= cl_image_tag @job.photo.key, class:"card-img-top", height: 300, width: 400 %>
@@ -17,12 +17,20 @@
       <div class="card-trip-pricing">
         <h2>USD<%= @job.service.price %></h2>
         <h2><%= @job.status %></h2>
+        <% if @job.have_ratings? %>
+        <h2>Rating:
+            <% @job.review.rating.round.times do %>
+              <i class="fas fa-star" style="color:gold;"></i>
+            <% end %>
+        </h2>
+        <% end %>
       </div>
     </div>
     <div class="container d-flex justify-content-center" style="background-color: #d3e0ea;">
       <div class="my-3">
         <%= link_to "Reviews", job_reviews_path(@job), class:"btn btn-primary" %>
         <%= link_to "Add review", new_job_review_path(@job), class:"btn btn-success" %>
+        <%= link_to "Edit", edit_job_path(@job), class:"btn btn-secondary" %>
         <%= link_to "Delete", job_path(@job), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-danger" %>
       </div>
     </div>

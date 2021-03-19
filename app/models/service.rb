@@ -25,6 +25,6 @@ class Service < ApplicationRecord
   end
 
   def avg_ratings
-     self.reviews.average(:rating)
+    self.reviews.average(:rating)
   end
 end

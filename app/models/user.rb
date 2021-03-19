@@ -27,7 +27,12 @@ class User < ApplicationRecord
 
   has_many :orders
 
+  def have_ratings?
+    self.vendor_reviews.empty?
+  end
+
   def avg_ratings
     self.vendor_reviews.average(:rating)
   end
+
 end

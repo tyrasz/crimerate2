@@ -60,6 +60,22 @@ class JobsController < ApplicationController
     redirect_to jobs_path
   end
 
+  def edit
+    @job = Job.find(params[:id])
+    authorize @job
+  end
+
+  def update
+    @job = Job.find(params[:id])
+    @job.service.user = current_user
+    authorize @job
+    if @job.update(job_params)
+      redirect_to job_path(@job)
+    else
+      render :edit
+    end
+  end
+
   def nearby
     @jobs = policy_scope(Job) && Job.where(status: "Completed")
     @markers = @jobs.geocoded.map do |job|
@@ -79,6 +95,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-    params.require(:job).permit(:description, :date, :location, :service_id, :user_id)
+    params.require(:job).permit(:description, :date, :location, :service_id, :user_id, :status)
   end
 end
