@@ -6,7 +6,8 @@ class JobsController < ApplicationController
     @markers = @jobs.geocoded.map do |job|
       {
         lng: job.longitude,
-        lat: job.latitude
+        lat: job.latitude,
+        infoWindow: { content: render_to_string(partial: "info_window", locals: { job: job }) }
       }
     end
   end
