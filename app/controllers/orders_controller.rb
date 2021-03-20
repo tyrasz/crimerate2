@@ -21,6 +21,8 @@ class OrdersController < ApplicationController
   end
 
   def show
+    mail = OrderMailer.with(user: current_user, order: @order).order
+    mail.deliver_now
     @order = current_user.orders.find(params[:id])
     @user = current_user
     authorize @order
