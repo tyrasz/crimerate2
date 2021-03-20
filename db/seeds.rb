@@ -29,9 +29,9 @@ testuser = User.create!(email: 'user_test@hotmail.com',
 
 puts "Finished creating test account for vendor"
 
-puts "Creating 50 users..."
+puts "Creating 10 users..."
 
-50.times do
+10.times do
   user = User.new(
     email: Faker::Internet.email,
     password: '123456',
@@ -42,10 +42,10 @@ puts "Creating 50 users..."
   user.save!
 end
 
-puts "Finished creating 50 users."
+puts "Finished creating 10 users."
 
-puts "Creating 50 vendors and service offerings..."
-50.times do
+puts "Creating 10 vendors and service offerings..."
+10.times do
   vendor = User.new(
     email: Faker::Internet.email,
     password: '123456',
@@ -80,10 +80,10 @@ puts "Creating 50 vendors and service offerings..."
   end
 end
 
-puts "Finished creating 50 vendors and service offerings."
+puts "Finished creating 10 vendors and service offerings."
 
-puts "Creating 100 jobs"
-100.times do
+puts "Creating 10 jobs"
+10.times do
   job = Job.new(
     description: Faker::Games::StreetFighter.quote,
     date: Faker::Date.in_date_period,
@@ -106,11 +106,11 @@ puts "Creating 100 jobs"
     end
 end
 
-puts "Finished creating 100 jobs and reviews..."
+puts "Finished creating 10 jobs and reviews..."
 
 
 puts "Creating services, jobs and reviews for test vendor"
-(20..30).to_a.sample.times do
+(10..20).to_a.sample.times do
   service = Service.new(
     name: [
       "Steal all your candies",
@@ -152,7 +152,7 @@ end
 puts "Finished services, jobs and reviews for test vendor"
 
 puts "Creating jobs and reviews for test user"
-50.times do
+10.times do
   job = Job.new(
     description: Faker::Games::StreetFighter.quote,
     date: Faker::Date.in_date_period,
