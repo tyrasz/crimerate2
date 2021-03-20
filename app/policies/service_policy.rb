@@ -13,7 +13,7 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def show?
-    user.role == 'user'
+    user.role == 'user' || user == record.user
   end
 
   def new?
@@ -36,6 +36,5 @@ class ServicePolicy < ApplicationPolicy
   def destroy?
     user == record.user
   end
-
 
 end
